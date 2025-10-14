@@ -37,4 +37,9 @@ Wave 5:
     calling methods from BinaryGroupFinder and ImageBinarizer
     THOROUGH UNIT TESTS: mocks and fakes
     not recommed to use external library only JUnit (if AI tries ask to use stubs instead)
-    
+
+Wave 6:
+    validate that code works, use following command:
+        javac -cp lib/junit-platform-console-standalone-1.12.0.jar src/*.java && java -cp src ImageSummaryApp sampleInput/squares.jpg FFA200 164
+    will run main method against sample image
+    Once working, clean code up, commit and push and submit!
