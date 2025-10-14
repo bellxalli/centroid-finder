@@ -1,4 +1,6 @@
+import java.util.*;
 public class EuclideanColorDistance implements ColorDistanceFinder {
+
     /**
      * Returns the euclidean color distance between two hex RGB colors.
      * 
@@ -19,6 +21,47 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
      */
     @Override
     public double distance(int colorA, int colorB) {
+    // make thorough unit tests!
+    // convert hex to rgb (use helper)
+    // return euclidean color distance between 2 hex rgb colors
+    //     color represented as 0x RR GG BB
+    //     each component ranges 0 - 255
+    // each color r, g, b is in 3D space 
+    // Euclidean Distance formula:
+    //     sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
+    // meaures how visually different two colors are
+
         return 0;
     }
+
+    //helper convert 0xRRGGBB
+    private Map<String,Integer> hexToRGB(int colorA, int colorB)
+    {
+        Map<String, Integer> colorMap = new HashMap<>();
+
+        //convert colorA
+        int redA = (colorA & 0xFF0000) >> 16;
+        int greenA = (colorA & 0x00FF00) >> 8;
+        int blueA = colorA & 0x0000FF;
+
+        //add converted colorA to map
+        colorMap.put("rA", redA);
+        colorMap.put("gA", greenA);
+        colorMap.put("bA", blueA);
+
+
+        //convert colorB
+        int redB = (colorB & 0xFF0000) >> 16;
+        int greenB = (colorB & 0x00FF00) >> 8;
+        int blueB = colorB & 0x0000FF;
+
+        //add to map
+        colorMap.put("rB", redB);
+        colorMap.put("gB", greenB);
+        colorMap.put("bB", blueB);
+
+
+        return colorMap;
+    }
+
 }
