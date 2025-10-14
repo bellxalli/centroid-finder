@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
@@ -41,7 +42,9 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         // int value = image[rows][cols];
 
         if(image[0] == null || image[1] == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
-        if(image.length==0) throw new IllegalArgumentException ("Image can't be 0");
+        if(image.length==0) return new ArrayList<>();
+        if(image[0].length==0) return new ArrayList<>();
+
         if(cols < 0) throw new IllegalArgumentException ("Column is negative and can't be!");
         if(rows < 0) throw new IllegalArgumentException ("Row is negative and can't be!");
         if(image[0].length>(image[1].length)||image[0].length<(image[1].length)) throw new IllegalArgumentException ("The image isn't rectangular in shape/The rows and columns are not equal!");
