@@ -43,3 +43,6 @@ Wave 6:
         javac -cp lib/junit-platform-console-standalone-1.12.0.jar src/*.java && java -cp src ImageSummaryApp sampleInput/squares.jpg FFA200 164
     will run main method against sample image
     Once working, clean code up, commit and push and submit!
+
+Wave 7(optional):
+    optional fun play time in a separate branch to make code more efficient and / or experiment! 
