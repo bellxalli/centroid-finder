@@ -32,3 +32,9 @@ Wave 4:
     will be calling methods from BinaryGroupFinder and ColorDistanceFinder
     unit tests: mocks and fakes
     HINT: use the shift opertors <<,>> to change AARRGGBB to RRGGBB
+
+Wave 5:
+    calling methods from BinaryGroupFinder and ImageBinarizer
+    THOROUGH UNIT TESTS: mocks and fakes
+    not recommed to use external library only JUnit (if AI tries ask to use stubs instead)
+    
