@@ -38,12 +38,26 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         int rows = 0;
         int cols = 0;
         String coords = (rows + "," + cols);
+        // int value = image[rows][cols];
 
         if(image[0] == null || image[1] == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
         if(image.length==0) throw new IllegalArgumentException ("Image can't be 0");
-        if(cols > 0) throw new IllegalArgumentException ("Column is negative and can't be!");
-        if(rows > 0) throw new IllegalArgumentException ("Row is negative and can't be!");
-        if(image[0].length>(image[1].length)||image[0].length<(image[1].length)) throw new IllegalArgumentException ("The image isn't rectangle/The rows and columns are not equal");
+        if(cols < 0) throw new IllegalArgumentException ("Column is negative and can't be!");
+        if(rows < 0) throw new IllegalArgumentException ("Row is negative and can't be!");
+        if(image[0].length>(image[1].length)||image[0].length<(image[1].length)) throw new IllegalArgumentException ("The image isn't rectangular in shape/The rows and columns are not equal!");
+
+        for (int[] row : image){
+            for (int value : row){
+
+                // if value is not 1 or 0 its invalid
+                if (value != 0 && value != 1){
+
+                throw new IllegalArgumentException("Invalid value: " + value + "!");
+
+            }//end if
+         }//end for1
+        }//end for2
+
 
         // if() throw new IllegalArgumentException ("Illegal Argument exception");
 
