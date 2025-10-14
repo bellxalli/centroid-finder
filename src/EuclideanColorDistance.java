@@ -31,37 +31,24 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
     //     sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
     // meaures how visually different two colors are
 
+
+
         return 0;
     }
 
     //helper convert 0xRRGGBB
-    private Map<String,Integer> hexToRGB(int colorA, int colorB)
+    private int[] hexToRGB(int color)
     {
-        Map<String, Integer> colorMap = new HashMap<>();
+        int[] rgb = new int[3];
+        int red = (color & 0xFF0000) >> 16;
+        int green = (color & 0x00FF00) >> 8;
+        int blue = color & 0x0000FF;
 
-        //convert colorA
-        int redA = (colorA & 0xFF0000) >> 16;
-        int greenA = (colorA & 0x00FF00) >> 8;
-        int blueA = colorA & 0x0000FF;
+        rgb[0] = red;
+        rgb[1] = green;
+        rgb[2] = blue;
 
-        //add converted colorA to map
-        colorMap.put("rA", redA);
-        colorMap.put("gA", greenA);
-        colorMap.put("bA", blueA);
-
-
-        //convert colorB
-        int redB = (colorB & 0xFF0000) >> 16;
-        int greenB = (colorB & 0x00FF00) >> 8;
-        int blueB = colorB & 0x0000FF;
-
-        //add to map
-        colorMap.put("rB", redB);
-        colorMap.put("gB", greenB);
-        colorMap.put("bB", blueB);
-
-
-        return colorMap;
+        return rgb;
     }
 
 }
