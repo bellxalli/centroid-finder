@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
  * Most are real integration-style unit tests on the DFS logic,
  * except for the two clearly labeled "mock" and "fake" tests at the end.
  */
-public class Wave2Tests {
+public class DfsBinaryGroupFinderTests {
 
     private final BinaryGroupFinder finder = new DfsBinaryGroupFinder();
 

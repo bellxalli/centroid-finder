@@ -34,9 +34,24 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     @Override
     public List<Group> findConnectedGroups(int[][] image) {
 
-      if(image == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
+        // (rows = y, cols = x)
+        int rows = 0;
+        int cols = 0;
+        String coords = (rows + "," + cols);
 
-    //   if() throw new IllegalArgumentException ("Illegal Argument exception");
+        if(image[0] == null || image[1] == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
+        if(image.length==0) throw new IllegalArgumentException ("Image can't be 0");
+        if(cols > 0) throw new IllegalArgumentException ("Column is negative and can't be!");
+        if(rows > 0) throw new IllegalArgumentException ("Row is negative and can't be!");
+        if(image[0].length>(image[1].length)||image[0].length<(image[1].length)) throw new IllegalArgumentException ("The image isn't rectangle/The rows and columns are not equal");
+
+        // if() throw new IllegalArgumentException ("Illegal Argument exception");
+
+
+
+
+        
+
 
 // finds 1s and 0s in a binary image
 //uses a 2d array- int[]][] image
