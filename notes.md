@@ -20,3 +20,15 @@ Wave 3:
     Euclidean Distance formula:
         sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
     meaures how visually different two colors are
+
+Wave 4:
+    create the new image (black and white)
+        uses color distance to figure out wheich pixel is black or white in final result
+        if distacne is < threshold then pixel = 1 (white), else pixel = black (0)
+    do research on `java.awt.image.BufferedImage`
+        speifically `getRGB` and `setRGB`
+    use following to create a new image:
+        new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+    will be calling methods from BinaryGroupFinder and ColorDistanceFinder
+    unit tests: mocks and fakes
+    HINT: use the shift opertors <<,>> to change AARRGGBB to RRGGBB
