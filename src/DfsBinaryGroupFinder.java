@@ -33,7 +33,16 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     */
     @Override
     public List<Group> findConnectedGroups(int[][] image) {
+
+      if(image == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
+
+    //   if() throw new IllegalArgumentException ("Illegal Argument exception");
+
+// finds 1s and 0s in a binary image
+//uses a 2d array- int[]][] image
+
         return null;
-    }
+
+    }//end findConnectedGroups
     
 }
