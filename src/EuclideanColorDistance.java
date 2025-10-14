@@ -31,10 +31,24 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
     //     sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
     // meaures how visually different two colors are
 
+    
+    //get rgb values
+        int[] rgb1 = hexToRGB(colorA);
+        int[] rgb2 = hexToRGB(colorB);
 
+    //break formula into little pieces
+        //do subtraction and squaring
+        double r = Math.pow((rgb1[0] - rgb2[0]),2);
+        double g = Math.pow((rgb1[1] - rgb2[1]),2);
+        double b = Math.pow((rgb1[2] - rgb2[2]),2);
+        //do addistion
+        double rgbSum = r + g + b;
+        //square root
+        double euclideanResult = Math.sqrt(rgbSum);
 
-        return 0;
+        return euclideanResult;
     }
+
 
     //helper convert 0xRRGGBB
     private int[] hexToRGB(int color)
