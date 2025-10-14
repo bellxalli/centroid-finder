@@ -1,4 +1,3 @@
-import java.util.*;
 public class EuclideanColorDistance implements ColorDistanceFinder {
 
     /**
@@ -31,7 +30,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
     //     sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
     // meaures how visually different two colors are
 
-    
+
     //get rgb values
         int[] rgb1 = hexToRGB(colorA);
         int[] rgb2 = hexToRGB(colorB);
