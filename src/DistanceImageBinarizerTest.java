@@ -89,10 +89,11 @@ public class DistanceImageBinarizerTest {
 
         BufferedImage image = binarizer.toBufferedImage(binary);
 
-        assertEquals(0xFFFFFF, image.getRGB(0, 0), "Pixel [0][0] should be white");
-        assertEquals(0x000000, image.getRGB(1, 0), "Pixel [0][1] should be black");
-        assertEquals(0x000000, image.getRGB(0, 1), "Pixel [1][0] should be black");
-        assertEquals(0xFFFFFF, image.getRGB(1, 1), "Pixel [1][1] should be white");
+        assertEquals(0xFFFFFF, image.getRGB(0, 0) & 0x00FFFFFF, "Pixel [0][0] should be white");
+        assertEquals(0x000000, image.getRGB(1, 0) & 0x00FFFFFF, "Pixel [0][1] should be black");
+        assertEquals(0x000000, image.getRGB(0, 1) & 0x00FFFFFF, "Pixel [1][0] should be black");
+        assertEquals(0xFFFFFF, image.getRGB(1, 1) & 0x00FFFFFF, "Pixel [1][1] should be white");
+
     }
 
     @Test
