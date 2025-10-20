@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
@@ -36,14 +37,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         int rows = 0;
         int cols = 0;
         // String coords = (rows + "," + cols);
-        int height = image.length;
-        int width = image[0].length;
-
-        boolean[][] visited = new boolean[height][width];
-        List<int[]> pixels = new ArrayList<>();
         List<Group> groups = new ArrayList<>();
 
-        //DEAD CODE if (image == null) throw new NullPointerException("Array is null and can't be!");
         if (image.length == 0) return new ArrayList<>();
 
         for (int[] row : image) {
@@ -51,6 +46,11 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             if (row == null) throw new NullPointerException("Subarray is null and can't be!");
 
         }//end for
+
+        int height = image.length;
+        int width = image[0].length;
+
+        boolean[][] visited = new boolean[height][width];
 
         for (int[] row : image){
 
@@ -86,6 +86,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             for (int x = 0; x < width; x++) {
                 if (image[y][x] == 1 && !visited[y][x]) {
 
+                    List<int[]> pixels = new ArrayList<>(); //makes a pixels list every time
+
                     helper(image, visited, y, x, pixels, directions, height, width);
 
                     int size = pixels.size();
@@ -108,9 +110,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             }//end forOuter
         }//end main for
 
-
-// finds 1s and 0s in a binary image
-//uses a 2d array- int[]][] image
+        Collections.sort(groups, Collections.reverseOrder());
 
         return groups;
 
