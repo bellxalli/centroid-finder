@@ -65,9 +65,10 @@ public class DfsBinaryGroupFinderTests {
         assertEquals(1, groups.size());
         Group g = groups.get(0);
         assertEquals(1, g.size());
-        assertEquals(1, g.x());
-        assertEquals(1, g.y());
+        assertEquals(1, g.centroid().x());
+        assertEquals(1, g.centroid().y());
     }
+
 
     @Test
     public void testConnectedPixelsFormSingleGroupAndCentroidIntegerDivision() {

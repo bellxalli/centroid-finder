@@ -43,7 +43,6 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         List<int[]> pixels = new ArrayList<>();
         List<Group> groups = new ArrayList<>();
 
-        //DEAD CODE if (image == null) throw new NullPointerException("Array is null and can't be!");
         if (image.length == 0) return new ArrayList<>();
 
         for (int[] row : image) {
