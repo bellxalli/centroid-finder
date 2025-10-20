@@ -82,8 +82,8 @@ public class DfsBinaryGroupFinderTests {
         assertEquals(1, groups.size());
         Group g = groups.get(0);
         assertEquals(3, g.size());
-        assertEquals(1, g.x());
-        assertEquals(1, g.y());
+        assertEquals(1, g.centroid().x());
+        assertEquals(1, g.centroid().y());
     }
 
     @Test
@@ -112,16 +112,16 @@ public class DfsBinaryGroupFinderTests {
         Group third = groups.get(2);
 
         assertEquals(3, first.size());
-        assertEquals(2, first.x());
-        assertEquals(3, first.y());
+        assertEquals(2, first.centroid().x());
+        assertEquals(3, first.centroid().y());
 
         assertEquals(3, second.size());
-        assertEquals(0, second.x());
-        assertEquals(0, second.y());
+        assertEquals(0, second.centroid().x());
+        assertEquals(0, second.centroid().y());
 
         assertEquals(2, third.size());
-        assertEquals(4, third.x());
-        assertEquals(0, third.y());
+        assertEquals(4, third.centroid().x());
+        assertEquals(0, third.centroid().y());
     }
 
     @Test
@@ -136,10 +136,10 @@ public class DfsBinaryGroupFinderTests {
         Group second = groups.get(1);
         assertEquals(1, first.size());
         assertEquals(1, second.size());
-        assertEquals(1, first.x());
-        assertEquals(1, first.y());
-        assertEquals(0, second.x());
-        assertEquals(0, second.y());
+        assertEquals(1, first.centroid().x());
+        assertEquals(1, first.centroid().y());
+        assertEquals(0, second.centroid().x());
+        assertEquals(0, second.centroid().y());
     }
 
     // -----------------------------------------------------
@@ -172,8 +172,8 @@ public class DfsBinaryGroupFinderTests {
         assertEquals(1, result.size());
         Group g = result.get(0);
         assertEquals(99, g.size());
-        assertEquals(5, g.x());
-        assertEquals(5, g.y());
+        assertEquals(5, g.centroid().x());
+        assertEquals(5, g.centroid().y());
     }
 
     // -----------------------------------------------------

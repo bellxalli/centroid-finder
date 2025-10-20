@@ -36,10 +36,6 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         int rows = 0;
         int cols = 0;
         // String coords = (rows + "," + cols);
-        int height = image.length;
-        int width = image[0].length;
-
-        boolean[][] visited = new boolean[height][width];
         List<int[]> pixels = new ArrayList<>();
         List<Group> groups = new ArrayList<>();
 
@@ -50,6 +46,11 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             if (row == null) throw new NullPointerException("Subarray is null and can't be!");
 
         }//end for
+
+        int height = image.length;
+        int width = image[0].length;
+
+        boolean[][] visited = new boolean[height][width];
 
         for (int[] row : image){
 
