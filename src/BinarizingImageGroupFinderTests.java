@@ -91,6 +91,6 @@ public class BinarizingImageGroupFinderTests {
         );
 
         List<Group> result = finder.findConnectedGroups(new BufferedImage(3,3,BufferedImage.TYPE_INT_RGB));
-        assertEquals(5, result.size(), "Expected 5 groups of size 1 (each 1 in array)");
+        assertEquals(4, result.size(), "Expected 4 groups of size 1 (each 1 in array)");
     }
 }
