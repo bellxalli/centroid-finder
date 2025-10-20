@@ -53,8 +53,8 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         {
             for(int col = 0; col < width; col++)
             {
-                //getRGB(x,y) return AARRGGBB so shift left two spaces
-                int rgb = image.getRGB(col, row) >> 2;
+                //getRGB(x,y) return AARRGGBB so shift left two spaces (use & not <<>>)
+                int rgb = image.getRGB(col, row) & 0x00FFFFFF;
 
                 //use distance method 
                 ColorDistanceFinder finder = new EuclideanColorDistance();
@@ -86,9 +86,23 @@ public class DistanceImageBinarizer implements ImageBinarizer {
     public BufferedImage toBufferedImage(int[][] image) {
         int height = image.length; //height = row = y?
         int width = image[0].length; //width = column = x?
-        
 
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+
+        for(int row = 0; row < height; row++)
+        {
+            for(int col = 0; col < width; col++)
+            {
+                if(image[row][col] == 1) // white
+                {
+                    img.setRGB(col, row, 0xFFFFFF);
+                }
+                else // image[row][col] == 0 black
+                {
+                    img.setRGB(col, row, 0x000000);
+                }
+            }
+        }
 
         return img;
     }
