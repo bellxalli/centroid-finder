@@ -57,8 +57,7 @@ public class DistanceImageBinarizer implements ImageBinarizer {
                 int rgb = image.getRGB(col, row) & 0x00FFFFFF;
 
                 //use distance method 
-                ColorDistanceFinder finder = new EuclideanColorDistance();
-                double distance = finder.distance(rgb, targetColor);
+                double distance = distanceFinder.distance(rgb, targetColor);
 
                 if(distance < threshold) // if less then threshold turn white (1)
                 {
