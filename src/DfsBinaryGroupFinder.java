@@ -36,15 +36,28 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         int rows = 0;
         int cols = 0;
         String coords = (rows + "," + cols);
-        // int value = image[rows][cols];
+        int height = image.length;
+        int width = image[0].length;
 
-        if(image[0] == null || image[1] == null) throw new NullPointerException("Array/Subarray is null and can't be!"); 
-        if(image.length==0) return new ArrayList<>();
-        if(image[0].length==0) return new ArrayList<>();
+        boolean[][] visited = new boolean[height][width];
+        List<int[]> pixels = new ArrayList<>();
 
-        if(cols < 0) throw new IllegalArgumentException ("Column is negative and can't be!");
-        if(rows < 0) throw new IllegalArgumentException ("Row is negative and can't be!");
-        if(image[0].length>(image[1].length)||image[0].length<(image[1].length)) throw new IllegalArgumentException ("The image isn't rectangular in shape/The rows and columns are not equal!");
+
+        if (image == null) throw new NullPointerException("Array is null and can't be!");
+        if (image.length == 0) return new ArrayList<>();
+
+        for (int[] row : image) {
+           
+            if (row == null) throw new NullPointerException("Subarray is null and can't be!");
+
+        }//end for
+
+        for (int[] row : image){
+
+            if (row.length != width) throw new IllegalArgumentException(
+            "The image isn't rectangular in shape/The rows and columns are not equal!");
+
+        }//end for
 
         for (int[] row : image){
             for (int value : row){
@@ -55,8 +68,20 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 throw new IllegalArgumentException("Invalid value: " + value + "!");
 
             }//end if
-         }//end for1
-        }//end for2
+         }//end forInner
+        }//end forOutter
+
+
+        int[][] directions = {
+
+            {-1,0}, // up
+            {1,0}, // down
+            {0,-1}, // left
+            {0,1} // right
+
+        };
+
+
 
 
         // if() throw new IllegalArgumentException ("Illegal Argument exception");
@@ -74,4 +99,26 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
 
     }//end findConnectedGroups
     
+
+    public void helper(int[][] image, boolean[][] visited, int y, int x, List<int[]> pixels, int[][] directions, int height, int width) {
+        
+        visited[y][x] = true;
+
+        pixels.add(new int[]{y, x});
+
+        for (int[] d : directions) {
+
+            int newY = y + d[0];
+            int newX = x + d[1];
+
+            if (newY >= 0 && newY < height && 
+            newX >= 0 && newX < width && 
+            !visited[newY][newX] && 
+            image[newY][newX] == 1) 
+            {
+            helper(image, visited, newY, newX, pixels, directions, height, width);
+            } //end if
+        }//end for
+    }//end helper
+
 }
