@@ -35,15 +35,15 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         // (rows = y, cols = x)
         int rows = 0;
         int cols = 0;
-        String coords = (rows + "," + cols);
+        // String coords = (rows + "," + cols);
         int height = image.length;
         int width = image[0].length;
 
         boolean[][] visited = new boolean[height][width];
         List<int[]> pixels = new ArrayList<>();
+        List<Group> groups = new ArrayList<>();
 
-
-        if (image == null) throw new NullPointerException("Array is null and can't be!");
+        //DEAD CODE if (image == null) throw new NullPointerException("Array is null and can't be!");
         if (image.length == 0) return new ArrayList<>();
 
         for (int[] row : image) {
@@ -82,20 +82,37 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         };
 
 
+    for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                if (image[y][x] == 1 && !visited[y][x]) {
 
+                    helper(image, visited, y, x, pixels, directions, height, width);
 
-        // if() throw new IllegalArgumentException ("Illegal Argument exception");
+                    int size = pixels.size();
+                    int sumOfX = 0;
+                    int sumOfY = 0;
 
+                    for (int[] pix : pixels) {
 
+                        sumOfY += pix[0];
+                        sumOfX += pix[1];
 
+                    }//end forInner
 
-        
+                    int centroidX = sumOfX / size;
+                    int centroidY = sumOfY / size;
+
+                    groups.add(new Group(size, new Coordinate(centroidX, centroidY)));
+
+                }//end if 
+            }//end forOuter
+        }//end main for
 
 
 // finds 1s and 0s in a binary image
 //uses a 2d array- int[]][] image
 
-        return null;
+        return groups;
 
     }//end findConnectedGroups
     
