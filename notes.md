@@ -23,7 +23,7 @@ Wave 3:
 
 Wave 4:
     create the new image (black and white)
-        uses color distance to figure out wheich pixel is black or white in final result
+        uses color distance to figure out which pixel is black or white in final result
         if distacne is < threshold then pixel = 1 (white), else pixel = black (0)
     do research on `java.awt.image.BufferedImage`
         speifically `getRGB` and `setRGB`
