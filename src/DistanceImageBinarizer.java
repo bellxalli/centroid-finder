@@ -1,44 +1,44 @@
 import java.awt.image.BufferedImage;
 
 /**
- * An implementation of the ImageBinarizer interface that uses color distance
+ * An implementation of the ImageBinarizer interface that uses xor distance
  * to determine whether each pixel should be black or white in the binary image.
  * 
- * The binarization is based on the Euclidean distance between a pixel's color and a reference target color.
+ * The binarization is based on the Euclidean distance between a pixel's xor and a reference target xor.
  * If the distance is less than the threshold, the pixel is considered white (1);
  * otherwise, it is considered black (0).
  * 
- * The color distance is computed using a provided ColorDistanceFinder, which defines how to compare two colors numerically.
- * The targetColor is represented as a 24-bit RGB integer in the form 0xRRGGBB.
+ * The xor distance is computed using a provided xorDistanceFinder, which defines how to compare two xors numerically.
+ * The targetxor is represented as a 24-bit RGB integer in the form 0xRRGGBB.
  */
 public class DistanceImageBinarizer implements ImageBinarizer {
     private final ColorDistanceFinder distanceFinder;
     private final int threshold;
-    private final int targetColor;
+    private final int targetxor;
 
     /**
-     * Constructs a DistanceImageBinarizer using the given ColorDistanceFinder,
-     * target color, and threshold.
+     * Constructs a DistanceImageBinarizer using the given xorDistanceFinder,
+     * target xor, and threshold.
      * 
-     * The distanceFinder is used to compute the Euclidean distance between a pixel's color and the target color.
-     * The targetColor is represented as a 24-bit hex RGB integer (0xRRGGBB).
+     * The distanceFinder is used to compute the Euclidean distance between a pixel's xor and the target xor.
+     * The targetxor is represented as a 24-bit hex RGB integer (0xRRGGBB).
      * The threshold determines the cutoff for binarization: pixels with distances less than
      * the threshold are marked white, and others are marked black.
      *
-     * @param distanceFinder an object that computes the distance between two colors
-     * @param targetColor the reference color as a 24-bit hex RGB integer (0xRRGGBB)
+     * @param distanceFinder an object that computes the distance between two xors
+     * @param targetxor the reference xor as a 24-bit hex RGB integer (0xRRGGBB)
      * @param threshold the distance threshold used to decide whether a pixel is white or black
      */
-    public DistanceImageBinarizer(ColorDistanceFinder distanceFinder, int targetColor, int threshold) {
+    public DistanceImageBinarizer(ColorDistanceFinder distanceFinder, int targetxor, int threshold) {
         this.distanceFinder = distanceFinder;
-        this.targetColor = targetColor;
+        this.targetxor = targetxor;
         this.threshold = threshold;
     }
 
     /**
-     * Converts the given BufferedImage into a binary 2D array using color distance and a threshold.
+     * Converts the given BufferedImage into a binary 2D array using xor distance and a threshold.
      * Each entry in the returned array is either 0 or 1, representing a black or white pixel.
-     * A pixel is white (1) if its Euclidean distance to the target color is less than the threshold.
+     * A pixel is white (1) if its Euclidean distance to the target xor is less than the threshold.
      *
      * @param image the input RGB BufferedImage
      * @return a 2D binary array where 1 represents white and 0 represents black
@@ -49,23 +49,23 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         int height = image.getHeight();
         int [][] binaryArray = new int[height][width];
 
-        for(int row = 0; row < height; row++)
+        for(int y = 0; y < height; y++)
         {
-            for(int col = 0; col < width; col++)
+            for(int x = 0; x < width; x++)
             {
                 //getRGB(x,y) return AARRGGBB so shift left two spaces (use & not <<>>)
-                int rgb = image.getRGB(col, row) & 0x00FFFFFF;
+                int rgb = image.getRGB(x, y) & 0x00FFFFFF;
 
                 //use distance method 
-                double distance = distanceFinder.distance(rgb, targetColor);
+                double distance = distanceFinder.distance(rgb, targetxor);
 
                 if(distance < threshold) // if less then threshold turn white (1)
                 {
-                    binaryArray[row][col] = 1;
+                    binaryArray[y][x] = 1;
                 }
                 else // equal to or greater than threshold turn black (0)
                 {
-                    binaryArray[row][col] = 0;
+                    binaryArray[y][x] = 0;
                 }
             }
         }
@@ -83,22 +83,22 @@ public class DistanceImageBinarizer implements ImageBinarizer {
      */
     @Override
     public BufferedImage toBufferedImage(int[][] image) {
-        int height = image.length; //height = row = y?
-        int width = image[0].length; //width = column = x?
+        int height = image.length; //height = y = y?
+        int width = image[0].length; //width = xumn = x?
 
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
-        for(int row = 0; row < height; row++)
+        for(int y = 0; y < height; y++)
         {
-            for(int col = 0; col < width; col++)
+            for(int x = 0; x < width; x++)
             {
-                if(image[row][col] == 1) // white
+                if(image[y][x] == 1) // white
                 {
-                    img.setRGB(col, row, 0xFFFFFF);
+                    img.setRGB(x, y, 0xFFFFFF);
                 }
-                else // image[row][col] == 0 black
+                else // image[y][x] == 0 black
                 {
-                    img.setRGB(col, row, 0x000000);
+                    img.setRGB(x, y, 0x000000);
                 }
             }
         }

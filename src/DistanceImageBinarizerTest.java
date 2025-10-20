@@ -70,10 +70,11 @@ public class DistanceImageBinarizerTest {
 
         int[][] result = binarizer.toBinaryArray(image);
 
-        assertEquals(1, result[0][0]);
-        assertEquals(0, result[1][0]);
-        assertEquals(1, result[0][1]);
-        assertEquals(0, result[1][1]);
+        assertEquals(1, result[0][0]);  // pixel (0, 0) white
+        assertEquals(0, result[0][1]);  // pixel (1, 0) black
+        assertEquals(1, result[1][0]);  // pixel (0, 1) white
+        assertEquals(0, result[1][1]);  // pixel (1, 1) black
+
     }
 
     @Test
