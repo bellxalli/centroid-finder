@@ -3,6 +3,7 @@
 ## *DO THIS FIRST* Wave 0: AI Rules 
 AI is *NOT ALLOWED* for generating implementations of the classes.
 AI is allowed for helping you make test cases.
+AI is now allowed for video parts so long as we understand what AI is doing.
 
 Don't have it just create the tests mindlessly for you though! Make sure you're actively involved in making the tests.
 
