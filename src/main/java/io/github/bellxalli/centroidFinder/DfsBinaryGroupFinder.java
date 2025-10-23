@@ -1,4 +1,3 @@
-
 package io.github.bellxalli.centroidFinder;
 
 import java.util.ArrayList;
