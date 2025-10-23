@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.025" tests="15" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="java.specification.version" value="24"/>
+    <property name="sun.cpu.isalist" value="amd64"/>
+    <property name="sun.jnu.encoding" value="Cp1252"/>
+    <property name="java.class.path" value="C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\test-classes;C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\classes;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\emily\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\emily\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="user.variant" value=""/>
+    <property name="java.vendor.url" value="https://java.oracle.com/"/>
+    <property name="user.timezone" value="America/Los_Angeles"/>
+    <property name="os.name" value="Windows 11"/>
+    <property name="java.vm.specification.version" value="24"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.boot.library.path" value="C:\Users\emily\tools\jdk-24.0.1\bin"/>
+    <property name="sun.java.command" value="C:\Users\emily\AppData\Local\Temp\surefire1550452365789526120\surefirebooter-20251023124847035_3.jar C:\Users\emily\AppData\Local\Temp\surefire1550452365789526120 2025-10-23T12-48-46_627-jvmRun1 surefire-20251023124847035_1tmp surefire_0-20251023124847035_2tmp"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="surefire.test.class.path" value="C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\test-classes;C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\classes;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\emily\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\emily\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="C:\Users\emily"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2025-04-15"/>
+    <property name="java.home" value="C:\Users\emily\tools\jdk-24.0.1"/>
+    <property name="file.separator" value="\"/>
+    <property name="basedir" value="C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="surefire.real.class.path" value="C:\Users\emily\AppData\Local\Temp\surefire1550452365789526120\surefirebooter-20251023124847035_3.jar"/>
+    <property name="user.script" value=""/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="24.0.1+9-30"/>
+    <property name="user.name" value="emily"/>
+    <property name="stdout.encoding" value="Cp1252"/>
+    <property name="path.separator" value=";"/>
+    <property name="os.version" value="10.0"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="C:\Users\emily\.m2\repository"/>
+    <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="C:\Users\emily\AppData\Local\Temp\"/>
+    <property name="java.version" value="24.0.1"/>
+    <property name="user.dir" value="C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="sun.os.patch.level" value=""/>
+    <property name="native.encoding" value="Cp1252"/>
+    <property name="java.library.path" value="C:\Users\emily\tools\jdk-24.0.1\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Users\emily\tools\jdk-24.0.1\bin;C:\Users\emily\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\emily\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0;C:\windows\System32\OpenSSH;C:\Users\Administrator\AppData\Local\Microsoft\WindowsApps;C:\Program Files\HP\OMEN-Broadcast\Common;C:\Program Files\dotnet;C:\Program Files\HP\HP One Agent;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0;C:\WINDOWS\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Users\emily\tools\jdk-24.0.1\bin;C:\Users\emily\AppData\Local\Microsoft\WindowsApps;C:\Users\emily\Downloads\Microsoft VS Code\bin;C:\Users\emily\AppData\Roaming\npm;C:\Users\emily\OneDrive\Desktop\apache-maven-3.9.11-bin\apache-maven-3.9.11\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl;."/>
+    <property name="java.vm.info" value="mixed mode, sharing"/>
+    <property name="stderr.encoding" value="Cp1252"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="24.0.1+9-30"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="68.0"/>
+  </properties>
+  <testcase name="testBoundaryValues" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testBlackAndWhite" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.0"/>
+  <testcase name="testSmallDifference" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.002"/>
+  <testcase name="testMidRangeColors" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testRedAndBlue" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.0"/>
+  <testcase name="testRandomColors" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testMonotonicity" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testRedAndGreen" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testComponentExtractionIndirectly" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testSameColorHasZeroDistance" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testGreenDifferenceOnly" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.0"/>
+  <testcase name="testGreenAndBlue" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testSymmetryProperty" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testBlueDifferenceOnly" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.001"/>
+  <testcase name="testRedDifferenceOnly" classname="io.github.bellxalli.centroidFinder.EuclideanColorDistanceTest" time="0.0"/>
+</testsuite>

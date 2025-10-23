@@ -1,4 +1,4 @@
-package github.bellxalli.centroidFinder;
+package io.github.bellxalli.centroidFinder;
 
 
 /**
