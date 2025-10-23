@@ -1,5 +1,8 @@
+package io.github.bellxalli.centroidFinder;
+
 import java.awt.image.BufferedImage;
 import java.util.List;
+
 
 /**
  * An implementation of the ImageGroupFinder interface that first binarizes a given image and then finds

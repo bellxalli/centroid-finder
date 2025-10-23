@@ -1,3 +1,7 @@
+
+package io.github.bellxalli.centroidFinder;
+
+
 /**
  * Represents a location in an image or array
  * 

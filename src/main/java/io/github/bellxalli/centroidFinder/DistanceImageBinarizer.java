@@ -1,4 +1,10 @@
+package io.github.bellxalli.centroidFinder;
+
+
 import java.awt.image.BufferedImage;
+
+
+
 
 /**
  * An implementation of the ImageBinarizer interface that uses xor distance

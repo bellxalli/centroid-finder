@@ -1,4 +1,9 @@
+
+package io.github.bellxalli.centroidFinder;
+
 import java.util.List;
+
+
 
 public interface BinaryGroupFinder {
    /**

@@ -1,5 +1,10 @@
-import java.util.List;
+package io.github.bellxalli.centroidFinder;
+
 import java.awt.image.BufferedImage;
+import java.util.List;
+
+
+
 
 public interface ImageGroupFinder {
     /**
