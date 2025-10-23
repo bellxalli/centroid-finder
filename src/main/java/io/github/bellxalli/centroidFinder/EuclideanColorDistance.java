@@ -1,4 +1,3 @@
-
 package io.github.bellxalli.centroidFinder;
 
 public class EuclideanColorDistance implements ColorDistanceFinder {
