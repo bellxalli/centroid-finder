@@ -71,7 +71,7 @@
                 <version>3.3.0</version>
                 <configuration>
                     <!-- Fully qualified class name -->
-                    <mainClass>io.github.bellxalli.centroidFinder.ImageSummaryApp</mainClass>
+                    <mainClass>io.github.bellxalli.centroidFinder.ExtractFrameSimple</mainClass>
                 </configuration>
             </plugin>
 
