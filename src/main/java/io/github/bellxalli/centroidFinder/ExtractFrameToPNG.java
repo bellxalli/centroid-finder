@@ -13,6 +13,7 @@ public class ExtractFrameToPNG {
     public static void main(String[] args) throws Exception {
         File videoFile = new File("ballsMoving.mp4");
         FrameGrab grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(videoFile));
+        grab.seekToSecondPrecise(2); // ⏱️ jump to 2s mark
 
         Picture picture = grab.getNativeFrame();
 
