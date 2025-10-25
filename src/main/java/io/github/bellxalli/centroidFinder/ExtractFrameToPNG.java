@@ -20,9 +20,12 @@ public class ExtractFrameToPNG {
         if (picture != null) {
             BufferedImage image = AWTUtil.toBufferedImage(picture); // ✅ Converts JCodec Picture → AWT image
             ImageIO.write(image, "png", new File("frame.png"));     // ✅ Writes to PNG
-            System.out.println("✅ Frame saved as frame.png");
+            
+            System.out.println("Width: " + picture.getWidth());
+            System.out.println("Width: " + picture.getHeight());
+            System.out.println("Frame saved as frame.png");
         } else {
-            System.out.println("⚠️ Could not extract frame.");
+            System.out.println("Could not extract frame.");
         }
     }
 }
