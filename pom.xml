@@ -7,6 +7,15 @@
     <artifactId>centroid-finder</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <!-- JCodec dependency -->
+    <dependency>
+        <groupId>org.jcodec</groupId>
+        <artifactId>jcodec</artifactId>
+        <version>0.2.5</version>
+    </dependency>
+
+    
+    
     <!-- ✅ JUnit 5 dependencies -->
     <dependencies>
         <dependency>
