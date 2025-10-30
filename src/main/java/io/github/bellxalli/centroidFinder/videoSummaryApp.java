@@ -29,7 +29,7 @@ public class VideoSummaryApp {
             }
             else if(colorArg.startsWith("0x") || colorArg.startsWith("0X"))
             {
-                targetColor = Integer.parseInt(colorArg.substring(2), 16);
+                targetColor = Integer.decode(colorArg);
             }
             else
             {
