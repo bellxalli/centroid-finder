@@ -9,6 +9,7 @@ import org.jcodec.scale.AWTUtil;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
@@ -28,13 +29,46 @@ public class VideoProcessor {
     //  imageBinarizer and DfsgroupFinder to help
     // convert to binarized img
     // then turn frames into new video
-    public void processVideo(File input, File output)
+    public void processVideo(File input, File outputCsv) throws IOException, JCodecException//add exceptions to be thrown
     {
-        //getting frame and creating new path for manipulated frames to be written out to and by
+        //getting frame 
         FrameGrab grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(input));
-        SequenceEncoder encoder = new SequenceEncoder(NIOUtils.writableChannel(output));
+        Picture frame;
+        int frameIndex = 0;
 
+        try(FileWriter writer = new FileWriter(outputCsv))
+        {
+            writer.write("Frame,X,Y,GroupSize\n"); //the columns
+
+            //iterative
+            while((frame = grab.getNativeFrame()) != null) //making sure frame is actually there
+            {
+                BufferedImage og = AWTUtil.toBufferedImage(frame); //turning frame to buffered img
+
+                //convert to binary using binaiazer
+                int [][] binaryArray = binarizer.toBinaryArray(og);
+
+                //find groups and centroids
+                List<Group> groups = groupFinder.findConnectedGroups(binaryArray);
+                if(!groups.isEmpty())
+                {
+                    Group largest = groups.get(0);
+                    int x = largest.centroid().x();
+                    int y = largest.centroid().y();
+                    int size = largest.size();
+
+                    writer.write(frameIndex + "," + x + "," + y + "," + size + "\n");
+                }
+                else
+                {
+                    writer.write(frameIndex + ",-1,-1,0\n"); //no groups were found
+                }
+
+                frameIndex++; //increase frame index
+            }
+        }
+        //tells me it's done
+        System.out.println("✅ CSV written to: " + outputCsv.getAbsolutePath());
 
     }
-
 }
