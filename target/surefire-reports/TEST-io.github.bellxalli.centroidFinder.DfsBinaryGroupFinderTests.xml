@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.029" tests="11" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.063" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="US"/>
     <property name="sun.boot.library.path" value="C:\Users\emily\tools\jdk-24.0.1\bin"/>
-    <property name="sun.java.command" value="C:\Users\emily\AppData\Local\Temp\surefire12438437130544540026\surefirebooter-20251029224136518_3.jar C:\Users\emily\AppData\Local\Temp\surefire12438437130544540026 2025-10-29T22-41-36_393-jvmRun1 surefire-20251029224136518_1tmp surefire_0-20251029224136518_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\emily\AppData\Local\Temp\surefire17731853630375189890\surefirebooter-20251029225659943_3.jar C:\Users\emily\AppData\Local\Temp\surefire17731853630375189890 2025-10-29T22-56-59_611-jvmRun1 surefire-20251029225659943_1tmp surefire_0-20251029225659943_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\test-classes;C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\target\classes;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\emily\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\emily\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\emily\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;C:\Users\emily\.m2\repository\org\jcodec\jcodec\0.2.5\jcodec-0.2.5.jar;C:\Users\emily\.m2\repository\org\jcodec\jcodec-javase\0.2.5\jcodec-javase-0.2.5.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\emily\AppData\Local\Temp\surefire12438437130544540026\surefirebooter-20251029224136518_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\emily\AppData\Local\Temp\surefire17731853630375189890\surefirebooter-20251029225659943_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.1+9-30"/>
@@ -58,15 +58,15 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="testNonRectangularThrowsIllegalArgumentException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
-  <testcase name="fakeTest_simpleFakeFinder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.004"/>
-  <testcase name="testNoDiagonalConnection" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
-  <testcase name="mockTest_manualMockFinder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
-  <testcase name="testInvalidValueThrowsIllegalArgumentException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
-  <testcase name="testConnectedPixelsFormSingleGroupAndCentroidIntegerDivision" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.0"/>
-  <testcase name="testNullImageThrowsNullPointerException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
-  <testcase name="testSeparateGroupsAndSortingOrder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
+  <testcase name="testNonRectangularThrowsIllegalArgumentException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.005"/>
+  <testcase name="fakeTest_simpleFakeFinder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.007"/>
+  <testcase name="testNoDiagonalConnection" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
+  <testcase name="mockTest_manualMockFinder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.008"/>
+  <testcase name="testInvalidValueThrowsIllegalArgumentException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.005"/>
+  <testcase name="testConnectedPixelsFormSingleGroupAndCentroidIntegerDivision" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
+  <testcase name="testNullImageThrowsNullPointerException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.003"/>
+  <testcase name="testSeparateGroupsAndSortingOrder" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
   <testcase name="testSinglePixelCreatesSingleGroupWithCorrectCentroid" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
-  <testcase name="testEmptyImageReturnsEmptyList" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.0"/>
-  <testcase name="testNullRowThrowsNullPointerException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.002"/>
+  <testcase name="testEmptyImageReturnsEmptyList" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.001"/>
+  <testcase name="testNullRowThrowsNullPointerException" classname="io.github.bellxalli.centroidFinder.DfsBinaryGroupFinderTests" time="0.004"/>
 </testsuite>
