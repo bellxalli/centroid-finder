@@ -77,5 +77,6 @@ public class VideoSummaryApp {
         System.out.println("   Input file: " + input.getName());
         System.out.println("   Output CSV: " + output.getAbsolutePath());
         System.out.println("   Target color: " + String.format("#%06X", targetColor));
-        System.out.println("   Threshold: " + threshold);    }
+        System.out.println("   Threshold: " + threshold);    
+    }
 }
