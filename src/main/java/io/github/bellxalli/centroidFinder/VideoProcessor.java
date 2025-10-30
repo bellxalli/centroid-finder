@@ -40,7 +40,7 @@ public class VideoProcessor {
 
             // create the CSV file for writing output
             writer = new BufferedWriter(new FileWriter(csvOutput));
-            writer.write("time_seconds,x,y\n"); // write header of CSV
+            writer.write("Frame Time, x, y\n"); // write header of CSV
 
             int frameIndex = 0;
 
