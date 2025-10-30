@@ -1,15 +1,18 @@
 package io.github.bellxalli.centroidFinder;
 
+import java.awt.image.BufferedImage;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.List;
+
 import org.jcodec.api.FrameGrab;
 import org.jcodec.api.JCodecException;
 import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.io.SeekableByteChannel;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
-
-import java.awt.image.BufferedImage;
-import java.io.*;
-import java.util.List;
 
 public class VideoProcessor {
 
@@ -40,8 +43,7 @@ public class VideoProcessor {
 
             // create the CSV file for writing output
             writer = new BufferedWriter(new FileWriter(csvOutput));
-            writer.write("Frame Time, x, y\n"); // write header of CSV
-
+ writer.write("Frame Time, x, y\n"); // write header of CSV
             int frameIndex = 0;
 
             // calculate frames per second (fps) safely
