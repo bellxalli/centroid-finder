@@ -6,12 +6,13 @@
     <groupId>io.github.bellxalli</groupId>
     <artifactId>centroid-finder</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>Centroid Finder</name>
 
 
     
     
-    <!-- ✅ JUnit 5 dependencies -->
     <dependencies>
+        <!-- JUnit 5 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -19,28 +20,13 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-
-            <!-- Core JCodec (decoding, encoding, etc.) -->
+        <!-- JCodec for video processing -->
         <dependency>
             <groupId>org.jcodec</groupId>
             <artifactId>jcodec</artifactId>
             <version>0.2.5</version>
         </dependency>
 
-        <!-- JavaSE module (AWT and image utilities) -->
         <dependency>
             <groupId>org.jcodec</groupId>
             <artifactId>jcodec-javase</artifactId>
@@ -49,11 +35,10 @@
     </dependencies>
 
     <build>
-        <!-- Correct Maven source root -->
         <sourceDirectory>src/main/java</sourceDirectory>
 
         <plugins>
-            <!-- ✅ Java 21 compiler setup -->
+            <!-- ✅ Java 21 Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -64,20 +49,7 @@
                 </configuration>
             </plugin>
 
-            <!-- ✅ Run ImageSummaryApp with mvn exec:java -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>exec-maven-plugin</artifactId>
-                <version>3.3.0</version>
-                <configuration>
-                    <!-- Fully qualified class name -->
-                    <!-- <mainClass>io.github.bellxalli.centroidFinder.ExtractFrameToPNG</mainClass> -->
-                    <mainClass>io.github.bellxalli.centroidFinder.ImageSummaryApp</mainClass>
-
-                </configuration>
-            </plugin>
-
-            <!-- ✅ Ensure Maven runs JUnit 5 tests -->
+            <!-- ✅ JUnit 5 test runner -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -85,6 +57,43 @@
                 <configuration>
                     <useModulePath>false</useModulePath>
                 </configuration>
+            </plugin>
+
+            <!-- ✅ Allow running directly via Maven -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <configuration>
+                    <mainClass>io.github.bellxalli.centroidFinder.VideoProcessorApp</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- ✅ Maven Assembly Plugin to build runnable JAR -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.6.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- Set your main class here -->
+                            <mainClass>io.github.bellxalli.centroidFinder.VideoSummaryApp</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

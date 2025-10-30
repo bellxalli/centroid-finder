@@ -10,5 +10,5 @@ io\github\bellxalli\centroidFinder\BinaryGroupFinder.class
 io\github\bellxalli\centroidFinder\ImageGroupFinder.class
 io\github\bellxalli\centroidFinder\Group.class
 io\github\bellxalli\centroidFinder\ImageSummaryApp.class
-io\github\bellxalli\centroidFinder\videoSummaryApp.class
 io\github\bellxalli\centroidFinder\DfsBinaryGroupFinder.class
+io\github\bellxalli\centroidFinder\VideoSummaryApp.class
