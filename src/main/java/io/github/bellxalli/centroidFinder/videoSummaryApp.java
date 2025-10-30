@@ -3,7 +3,7 @@ package io.github.bellxalli.centroidFinder;
 //imports
 import java.io.File;
 
-public class videoSummaryApp {
+public class VideoSummaryApp {
     public static void main(String[] args)
     {
         //creating files to grab video and send output data to        
