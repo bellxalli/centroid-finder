@@ -1,3 +1,4 @@
+io\github\bellxalli\centroidFinder\ExtractFrameToPNG.class
 io\github\bellxalli\centroidFinder\DistanceImageBinarizer.class
 io\github\bellxalli\centroidFinder\EuclideanColorDistance.class
 io\github\bellxalli\centroidFinder\ImageBinarizer.class

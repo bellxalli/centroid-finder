@@ -7,6 +7,9 @@
     <artifactId>centroid-finder</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+
+    
+    
     <!-- ✅ JUnit 5 dependencies -->
     <dependencies>
         <dependency>
@@ -28,6 +31,20 @@
             <artifactId>junit-jupiter-params</artifactId>
             <version>5.10.2</version>
             <scope>test</scope>
+        </dependency>
+
+            <!-- Core JCodec (decoding, encoding, etc.) -->
+        <dependency>
+            <groupId>org.jcodec</groupId>
+            <artifactId>jcodec</artifactId>
+            <version>0.2.5</version>
+        </dependency>
+
+        <!-- JavaSE module (AWT and image utilities) -->
+        <dependency>
+            <groupId>org.jcodec</groupId>
+            <artifactId>jcodec-javase</artifactId>
+            <version>0.2.5</version>
         </dependency>
     </dependencies>
 
@@ -54,7 +71,9 @@
                 <version>3.3.0</version>
                 <configuration>
                     <!-- Fully qualified class name -->
+                    <!-- <mainClass>io.github.bellxalli.centroidFinder.ExtractFrameToPNG</mainClass> -->
                     <mainClass>io.github.bellxalli.centroidFinder.ImageSummaryApp</mainClass>
+
                 </configuration>
             </plugin>
 

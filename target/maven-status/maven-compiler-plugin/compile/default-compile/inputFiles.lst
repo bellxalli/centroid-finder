@@ -1,11 +1,12 @@
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\BinarizingImageGroupFinder.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\BinaryGroupFinder.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ColorDistanceFinder.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\Coordinate.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\DfsBinaryGroupFinder.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\DistanceImageBinarizer.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\EuclideanColorDistance.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\Group.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageBinarizer.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageGroupFinder.java
-C:\Users\emily\OneDrive\Desktop\schoolStuff\SDEV 334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageSummaryApp.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\BinarizingImageGroupFinder.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\BinaryGroupFinder.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ColorDistanceFinder.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\Coordinate.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\DfsBinaryGroupFinder.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\DistanceImageBinarizer.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\EuclideanColorDistance.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ExtractFrameToPNG.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\Group.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageBinarizer.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageGroupFinder.java
+C:\Users\belle\Desktop\vscode\sdev_334\centroid-finder\src\main\java\io\github\bellxalli\centroidFinder\ImageSummaryApp.java
