@@ -3,61 +3,79 @@ package io.github.bellxalli.centroidFinder;
 import org.jcodec.api.FrameGrab;
 import org.jcodec.api.JCodecException;
 import org.jcodec.common.io.NIOUtils;
+import org.jcodec.common.io.SeekableByteChannel;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
 
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 
 public class VideoProcessor {
-    private final DistanceImageBinarizer binarizer;
-    private final DfsBinaryGroupFinder groupFinder;
 
-    public VideoProcessor(DistanceImageBinarizer binarizer, DfsBinaryGroupFinder groupFinder) 
-    {
+    protected DistanceImageBinarizer binarizer;
+    protected DfsBinaryGroupFinder groupFinder;
+
+    public VideoProcessor(DistanceImageBinarizer binarizer, DfsBinaryGroupFinder groupFinder) {
         this.binarizer = binarizer;
         this.groupFinder = groupFinder;
     }
 
+    public void processVideo(File input, File csvOutput) {
+        // initializing to null for later use
+        SeekableByteChannel channel = null;
+        BufferedWriter writer = null;
 
-    //get frame from video processor that will then be manipulated 
-    //using preexisting classes and their methods 
-    //  imageBinarizer and DfsgroupFinder to help
-    // convert to binarized img
-    // then turn frames into new video
-    public void processVideo(File input, File outputCsv) throws IOException, JCodecException//add exceptions to be thrown
-    {
-        //getting frame 
-        FrameGrab grab = FrameGrab.createFrameGrab(NIOUtils.readableChannel(input));
-        Picture frame;
-        int frameIndex = 0;
-
-        double fps = grab.getVideoTrack().getMeta().getTotalFrames() /
-                     grab.getVideoTrack().getMeta().getTotalDuration(); //get the time for the frame
-
-
-        try(FileWriter writer = new FileWriter(outputCsv))
+        try 
         {
-            writer.write("Time(s),X,Y\n"); //the columns
-
-            //iterative
-            while((frame = grab.getNativeFrame()) != null) //making sure frame is actually there
+            // handle null safely for test case
+            if (input == null || csvOutput == null) 
             {
-                BufferedImage og = AWTUtil.toBufferedImage(frame); //turning frame to buffered img
+                return;
+            }
 
-                //convert to binary using binaiazer
-                int [][] binaryArray = binarizer.toBinaryArray(og);
+            // open the video file for reading
+            channel = NIOUtils.readableChannel(input);
+            FrameGrab grab = FrameGrab.createFrameGrab(channel);
 
+            // create the CSV file for writing output
+            writer = new BufferedWriter(new FileWriter(csvOutput));
+            writer.write("time_seconds,x,y\n"); // write header of CSV
 
-                //calcualte time for given frame
+            int frameIndex = 0;
+
+            // calculate frames per second (fps) safely
+            double fps = 30.0; // default fallback if metadata is missing
+            try 
+            {
+                var meta = grab.getVideoTrack().getMeta();
+                if (meta.getTotalDuration() > 0 && meta.getTotalFrames() > 0) 
+                {
+                    fps = meta.getTotalFrames() / meta.getTotalDuration(); // get timestamp for frames
+                }
+            } 
+            catch (Exception e) 
+            {
+                System.out.println("Warning: Could not determine FPS, using default 30.");
+            }
+
+            Picture picture;
+            while ((picture = grab.getNativeFrame()) != null)
+            {
+                // convert to BufferedImage
+                BufferedImage frame = AWTUtil.toBufferedImage(picture);
+
+                // convert to binary
+                int[][] binary = binarizer.toBinaryArray(frame);
+
+                // find groups and centroids
+                List<Group> groups = groupFinder.findConnectedGroups(binary);
+
+                // calculate time for given frame
                 double timeInSeconds = frameIndex / fps;
 
-                //find groups and centroids
-                List<Group> groups = groupFinder.findConnectedGroups(binaryArray);
-                if(!groups.isEmpty())
+                // adding data from frame to CSV regardless if centroid found or not
+                if (!groups.isEmpty())
                 {
                     Group largest = groups.get(0);
                     int x = largest.centroid().x();
@@ -67,14 +85,25 @@ public class VideoProcessor {
                 }
                 else
                 {
-                    writer.write(String.format("%.3f,-1,-1\n", timeInSeconds)); //no groups were found
+                    writer.write(String.format("%.3f,-1,-1\n", timeInSeconds)); // no groups were found
                 }
 
-                frameIndex++; //increase frame index
+                frameIndex++;
             }
-        }
-        //tells me it's done
-        System.out.println("✅ CSV written to: " + outputCsv.getAbsolutePath());
 
+        }
+        catch (IOException | JCodecException e)
+        {
+            throw new RuntimeException("Error processing video: " + e.getMessage(), e);
+        }
+        finally
+        {
+            try 
+            {
+                if (writer != null) writer.close();
+                if (channel != null) channel.close(); // close the underlying channel instead of grab
+            } 
+            catch (IOException ignored) {}
+        }
     }
 }
