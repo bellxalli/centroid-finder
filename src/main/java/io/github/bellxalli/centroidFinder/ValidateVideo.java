@@ -1,60 +1,52 @@
 package io.github.bellxalli.centroidFinder;
 
-import java.io.File;
-
-
 public class ValidateVideo {
     
-    public static void validateInputs(String colorArg, String thresholdArg, File input){
+    public int[] validateColorAndThreshold(String colorArg, String thresholdArg){
 
-    //getting targetColor from agrs and converting it into int from various formats
-
-            int targetColor;
-            try
+        //getting targetColor from agrs and converting it into int from various formats
+        int[] validColors = new int[2];
+        int targetColor;
+        try
+        {
+            if(colorArg.startsWith("#"))
             {
-                if(colorArg.startsWith("#"))
-                {
-                    targetColor = Integer.parseInt(colorArg.substring(1), 16);
-                }
-                else if(colorArg.startsWith("0x") || colorArg.startsWith("0X"))
-                {
-                    targetColor = Integer.decode(colorArg);
-                }
-                else
-                {
-                    targetColor = Integer.parseInt(colorArg, 16);
-                }
+                targetColor = Integer.parseInt(colorArg.substring(1), 16);
+                validColors[0] = targetColor;
             }
-            catch (NumberFormatException e)
+            else if(colorArg.startsWith("0x") || colorArg.startsWith("0X"))
             {
-                System.out.println(e.getMessage());
-                System.out.println("Invalid color format. Use #RRGGBB or 0xRRGGBB (e.g. #FF0000).");
-                return;
+                targetColor = Integer.decode(colorArg);
+                validColors[0] = targetColor;
+
             }
+            else
+            {
+                targetColor = Integer.parseInt(colorArg, 16);
+                validColors[0] = targetColor;
 
-            //getting and converting threshold to int
-            int threshold;
-            try 
-            {
-                threshold = Integer.parseInt(thresholdArg);
-            } 
-            catch (NumberFormatException e) 
-            {
-                System.out.println(e.getMessage());
-                System.out.println("Invalid threshold value. Must be an integer.");
-                return;
             }
+        }
+        catch (NumberFormatException e)
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Invalid color format. Use #RRGGBB or 0xRRGGBB (e.g. #FF0000).");
+            return null;
+        }
 
-            //ensure input file exists
-            if (!input.exists()) 
-            {
-                System.out.println("Input file not found: " + input.getAbsolutePath());
-                return;
-            }
-
-
+        //getting and converting threshold to int
+        int threshold;
+        try 
+        {
+            threshold = Integer.parseInt(thresholdArg);
+            validColors[1] = threshold;
+        } 
+        catch (NumberFormatException e) 
+        {
+            System.out.println(e.getMessage());
+            System.out.println("Invalid threshold value. Must be an integer.");
+            return null;
+        }
+        return validColors;
     }
-
-
-
 }

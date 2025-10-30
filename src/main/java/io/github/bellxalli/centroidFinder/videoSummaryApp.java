@@ -18,14 +18,17 @@ public class VideoSummaryApp {
         File input = new File(args[0]);
         File output = new File(args[1]);
 
-        //getting targetColor from agrs and converting it into int from various formats
+        //vlaidating and getting targetColor and threshold
         String colorArg = args[2].trim();
         String thresholdArg = args[3].trim();
+        ValidateVideo validateNumbers = new ValidateVideo();
+        int[] validIntInputs = validateNumbers.validateColorAndThreshold(colorArg, thresholdArg);
+        int targetColor = validIntInputs[0];
+        int threshold = validIntInputs[1];
 
-        ValidateVideo validateInputs = new ValidateVideo();
-        validateInputs.validateInputs(colorArg, thresholdArg, input);
-
-       
+        //validating and getting file
+        ValidateFileInput validInput = new ValidateFileInput();
+        input = validInput.fileValidate(input);       
 
         //use euclidean color distance finder, binarizer, dsfgroupfinder
         ColorDistanceFinder distance = new EuclideanColorDistance();
