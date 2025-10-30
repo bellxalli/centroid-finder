@@ -3,7 +3,6 @@ package io.github.bellxalli.centroidFinder;
 //imports
 import org.jcodec.api.FrameGrab;
 import org.jcodec.api.JCodecException;
-import org.jcodec.api.SequenceEncoder;
 import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;

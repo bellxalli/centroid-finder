@@ -2,7 +2,6 @@ package io.github.bellxalli.centroidFinder;
 
 import org.jcodec.api.FrameGrab;
 import org.jcodec.api.JCodecException;
-import org.jcodec.api.SequenceEncoder;
 import org.jcodec.common.io.NIOUtils;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
@@ -36,9 +35,13 @@ public class VideoProcessor {
         Picture frame;
         int frameIndex = 0;
 
+        double fps = grab.getVideoTrack().getMeta().getTotalFrames() /
+                     grab.getVideoTrack().getMeta().getTotalDuration(); //get the time for the frame
+
+
         try(FileWriter writer = new FileWriter(outputCsv))
         {
-            writer.write("Frame,X,Y,GroupSize\n"); //the columns
+            writer.write("Time(s),X,Y\n"); //the columns
 
             //iterative
             while((frame = grab.getNativeFrame()) != null) //making sure frame is actually there
@@ -48,6 +51,10 @@ public class VideoProcessor {
                 //convert to binary using binaiazer
                 int [][] binaryArray = binarizer.toBinaryArray(og);
 
+
+                //calcualte time for given frame
+                double timeInSeconds = frameIndex / fps;
+
                 //find groups and centroids
                 List<Group> groups = groupFinder.findConnectedGroups(binaryArray);
                 if(!groups.isEmpty())
@@ -55,13 +62,12 @@ public class VideoProcessor {
                     Group largest = groups.get(0);
                     int x = largest.centroid().x();
                     int y = largest.centroid().y();
-                    int size = largest.size();
 
-                    writer.write(frameIndex + "," + x + "," + y + "," + size + "\n");
+                    writer.write(String.format("%.3f,%d,%d\n", timeInSeconds, x, y));
                 }
                 else
                 {
-                    writer.write(frameIndex + ",-1,-1,0\n"); //no groups were found
+                    writer.write(String.format("%.3f,-1,-1\n", timeInSeconds)); //no groups were found
                 }
 
                 frameIndex++; //increase frame index
