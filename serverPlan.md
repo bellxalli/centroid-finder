@@ -51,3 +51,7 @@ Checks the current job to see if its running, completed, or failed.
 
 
 PLAN:
+implement api requests and functionality in index.js
+will likely have to break the file up 
+get data that will be used in api requests from jar
+DO NOT create everything from scratch use what we have
