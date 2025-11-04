@@ -42,7 +42,12 @@ Checks the current job to see if its running, completed, or failed.
         404(Not Found) -> {"error": "Job ID not found"},
         500(Internal Server Error) -> {"error": "Error fetching job status"}
 
+
     Questions:
     1. for the last one, why is it 200(OK) even if its for an error
+
+    Answers (Researched):
+    1. Because the request itself was fine, so even if theres an error with the job, we should return a 200(OK) since it's just talking about the server itself being ok
+
 
 PLAN:
