@@ -4,10 +4,8 @@ io\github\bellxalli\centroidFinder\ColorDistanceFinder.class
 io\github\bellxalli\centroidFinder\Coordinate.class
 io\github\bellxalli\centroidFinder\VideoProcessor.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinder.class
-io\github\bellxalli\centroidFinder\ValidateFileInput.class
 io\github\bellxalli\centroidFinder\DistanceImageBinarizer.class
 io\github\bellxalli\centroidFinder\EuclideanColorDistance.class
-io\github\bellxalli\centroidFinder\ValidateVideo.class
 io\github\bellxalli\centroidFinder\BinaryGroupFinder.class
 io\github\bellxalli\centroidFinder\ImageGroupFinder.class
 io\github\bellxalli\centroidFinder\Group.class
