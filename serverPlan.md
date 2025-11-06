@@ -55,3 +55,15 @@ implement api requests and functionality in index.js
 will likely have to break the file up 
 get data that will be used in api requests from jar
 DO NOT create everything from scratch use what we have
+
+
+ARCHITECTURE SKETCH:
+
+User (makes a request to the server)
+v
+Goes to: the Express Server, index.js
+    (requests the user can make)
+        GET /api/videos, GET /thumbnail/:filename, POST /process/:filename?targetColor&threshold, GET /process/:jobId/status
+v
+Goes to: VideoProcessor.jar
+    (will read a video from /videos, outputs the CSV file to /results) 
