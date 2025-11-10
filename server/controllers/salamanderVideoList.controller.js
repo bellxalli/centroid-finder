@@ -21,7 +21,7 @@ export const requestSalamanderVideos = (req, res) =>
         return res.status(500).json({error: 'Error reading video directory'});
     }
     const videoFiles = files.filter(file => 
-        /\.(mp4|mov|avi|mkv)$/i.test(file)
+        /\.(mp4)$/i.test(file)
     );
         res.status(200).json(videoFiles);
     });
@@ -42,30 +42,40 @@ export const requestThumbnail = (req, res) =>
 
 export const respondStartProcess = (req, res) => 
 {
-    const {filename} = req.params;
-    const {targetColor, threshold} = req.query;
-
-    if(!targetColor || !threshold)
+    try
     {
-        return res.status(400).json({
-            error: "Missing targetColor or threshold query parameter."
-        }); // bad request
+        const {filename} = req.params;
+        const {targetColor, threshold} = req.query;
+
+        if(!targetColor || !threshold)
+        {
+            return res.status(400).json({
+                error: "Missing targetColor or threshold query parameter."
+            }); // bad request
+        }
+
+        const jobId = uuidv4();
+
+        jobs.set(jobId, {status: 'processing', filename});
+        
+        setTimeout(() => {
+            jobs.set(jobId, {
+                status: 'done',
+                result: `/results/${filename}.csv`
+            });
+        }, 5000); 
+
+        res.status(202).json({jobId}); // good
     }
+    catch(err)
+    {
+        console.error("Error in respondStartProcess:", error);
 
-    const jobId = uuidv4();
-
-    jobs.set(jobId, {status: 'processing', filename});
-    
-    setTimeout(() => {
-        jobs.set(jobId, {
-            status: 'done',
-            result: `/results/${filename}.csv`
+        // internal server error
+        res.status(500).json({
+            error: "Internal server error. Please try again later."
         });
-    }, 5000); 
-
-    //still have to include internal server error 500
-
-    res.status(202).json({jobId}); // good
+    }
 }
 
 export const requestJobStatus = (req, res) => 
