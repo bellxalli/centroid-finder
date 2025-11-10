@@ -32,7 +32,7 @@ export const respondStartProcess = (req, res) =>
     {
         return res.status(400).json({
             error: "Missing targetColor or threshold query parameter."
-        });
+        }); // bad request
     }
 
     const jobId = uuidv4();
@@ -44,12 +44,22 @@ export const respondStartProcess = (req, res) =>
             status: 'done',
             result: `/results/${filename}.csv`
         });
-    }, 5000);
+    }, 5000); 
 
-    res.status(202).json({jobId});
+    //still have to include internal server error 500
+
+    res.status(202).json({jobId}); // good
 }
 
 export const requestJobStatus = (req, res) => 
 {
-    //get jobId and status
+    const {jobId} = req.params;
+    const job = jobs.get(jobId);
+
+    if(!job)
+    {
+        return res.status(404).json({error: 'Job ID not found'});
+    }
+
+    res.status(200).json(job);
 }
