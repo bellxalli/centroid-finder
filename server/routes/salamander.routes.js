@@ -9,6 +9,6 @@ const router = express.Router();
 router.get("/videos/:videoName", requestSalamanderVideos);
 router.get("/thumbnail/:videoName", requestThumbnail);
 router.post("/process/:videoName", respondStartProcess);
-router.get("/process/:jobId/:status", requestJobStatus);
+router.get("/process/:jobId/status", requestJobStatus);
 
 export default router;
