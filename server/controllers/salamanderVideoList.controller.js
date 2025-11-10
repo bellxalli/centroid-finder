@@ -14,11 +14,17 @@ const jobs = new Map(); //store here for now
 
 export const requestSalamanderVideos = (req, res) => 
 {
-    const videos = getVideos();
-    if(videos)
-        res.status(200).json(videos);
-    else
-        res.status(500).send();
+    const videosDir = path.join(__dirname, '..', 'videos');
+    fs.readdir(videosDir, (err, files) => {
+    if(err) 
+    {
+        return res.status(500).json({error: 'Error reading video directory'});
+    }
+    const videoFiles = files.filter(file => 
+        /\.(mp4|mov|avi|mkv)$/i.test(file)
+    );
+        res.status(200).json(videoFiles);
+    });
 }
 
 export const requestThumbnail = (req, res) => 
@@ -31,7 +37,7 @@ export const requestThumbnail = (req, res) =>
             return res.status(500).json({error: 'Error generating thumbnail'});
         }
         res.status(200).json({message: `Thumbnail for ${filename} would go here`});
-    });
+    }); //update later with no placeholders
 }
 
 export const respondStartProcess = (req, res) => 
