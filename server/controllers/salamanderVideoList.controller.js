@@ -23,7 +23,15 @@ export const requestSalamanderVideos = (req, res) =>
 
 export const requestThumbnail = (req, res) => 
 {
-    //get thumbnail
+    const {fielname} = req.params;
+    const filePath = path.join(__dirname, '..', 'videos', filename);
+    fs.access(filePath, fs.constants.F_OK, (err) => {
+        if(err)
+        {
+            return res.status(500).json({error: 'Error generating thumbnail'});
+        }
+        res.status(200).json({message: `Thumbnail for ${filename} would go here`});
+    });
 }
 
 export const respondStartProcess = (req, res) => 
