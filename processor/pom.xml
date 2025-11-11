@@ -65,7 +65,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>3.3.0</version>
                 <configuration>
-                    <mainClass>io.github.bellxalli.centroidFinder.VideoProcessorApp</mainClass>
+                    <mainClass>io.github.bellxalli.centroidFinder.VideoSummaryApp</mainClass>
                 </configuration>
             </plugin>
 

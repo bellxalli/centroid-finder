@@ -2,6 +2,7 @@ package io.github.bellxalli.centroidFinder;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -123,24 +124,29 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
     
 
     public void helper(int[][] image, boolean[][] visited, int y, int x, List<int[]> pixels, int[][] directions, int height, int width) {
-        
-        visited[y][x] = true;
+        // BFS queue to avoid stack overflow
+        LinkedList<int[]> queue = new LinkedList<>();
+        queue.add(new int[]{y, x});
 
-        pixels.add(new int[]{y, x});
+        while (!queue.isEmpty()) {
+            int[] current = queue.removeFirst();
+            int curY = current[0];
+            int curX = current[1];
 
-        for (int[] d : directions) {
+            // Base case: stop if out of bounds, already visited, or not a 1
+            if (curY < 0 || curY >= height || curX < 0 || curX >= width || visited[curY][curX] || image[curY][curX] != 1)
+                continue;
 
-            int newY = y + d[0];
-            int newX = x + d[1];
+            visited[curY][curX] = true;
 
-            if (newY >= 0 && newY < height && 
-            newX >= 0 && newX < width && 
-            !visited[newY][newX] && 
-            image[newY][newX] == 1) 
-            {
-            helper(image, visited, newY, newX, pixels, directions, height, width);
-            } //end if
-        }//end for
+            pixels.add(new int[]{curY, curX});
+
+            for (int[] d : directions) {
+                int newY = curY + d[0];
+                int newX = curX + d[1];
+                queue.add(new int[]{newY, newX});
+            }//end for
+        }//end while
     }//end helper
 
 }
