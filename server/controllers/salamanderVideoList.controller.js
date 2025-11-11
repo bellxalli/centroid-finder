@@ -86,7 +86,7 @@ export const respondStartProcess = (req, res) => {
     if (targetColor.startsWith('#')) targetColor = '0x' + targetColor.slice(1);
 
     const jobId = uuidv4();
-    jobs.set(jobId, { status: 'processing', filename, progress: 0 });
+    jobs.set(jobId, { status: 'processing', filename });
 
     console.log('Running Java command with:');
     console.log('JAR:', JAR_PATH);
@@ -95,16 +95,12 @@ export const respondStartProcess = (req, res) => {
     console.log('TargetColor:', targetColor);
     console.log('Threshold:', threshold);
 
-    // Use shell: false to avoid Windows argument mangling
     const javaProcess = spawn('java', ['-jar', JAR_PATH, inputPath, outputCsv, targetColor, threshold], {
       shell: false
     });
 
     javaProcess.stdout.on('data', (data) => {
-      const text = data.toString();
-      console.log(`[Java stdout] ${text}`);
-      const match = text.match(/Progress:\s*(\d+)%/);
-      if (match) jobs.get(jobId).progress = parseInt(match[1], 10);
+      console.log(`[Java stdout] ${data.toString().trim()}`);
     });
 
     javaProcess.stderr.on('data', (data) => {
@@ -113,10 +109,15 @@ export const respondStartProcess = (req, res) => {
 
     javaProcess.on('exit', (code) => {
       console.log(`Java process exited with code ${code}`);
+      const job = jobs.get(jobId);
+
       if (code === 0 && fs.existsSync(outputCsv)) {
-        jobs.set(jobId, { status: 'done', filename, result: `/results/${filename}.csv` });
+        if (job) {
+          job.status = 'done';
+          job.result = `/results/${filename}.csv`;
+        }
       } else {
-        jobs.set(jobId, { status: 'error', filename });
+        if (job) job.status = 'error';
       }
     });
 
