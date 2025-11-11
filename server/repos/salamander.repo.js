@@ -1,26 +1,17 @@
-import fse from 'fs-extra';
+import fs from "fs";
 
-//read json array and convert to js object array
-const salamanderVideos = fse.readJSONSync("./src/db/salamanderVideos.json");
+const jobMap = new Map();
 
-//get list of videos
-export const getVideos = () =>
-{
-    return salamanderVideos;
+export function getAllVideos() {
+  return fs.readdirSync("./videos").filter(file => file.endsWith(".mp4"));
 }
 
-//get thumbnail associated with each video
-export const getThumbNail = () =>
-{
-    //get thumbanil and return it
+export function startProcessingJob(videoName) {
+  const jobId = `job_${Date.now()}`;
+  jobMap.set(jobId, { status: "processing", videoName });
+  return jobId;
 }
 
-export const postVideoProcess = () =>
-{
-    //send video process to backend
-}
-
-export const getVideoJobStatus = () => 
-{
-    //get jobId to track video processing status
+export function getJobStatus(jobId) {
+  return jobMap.get(jobId) || { status: "not_found" };
 }

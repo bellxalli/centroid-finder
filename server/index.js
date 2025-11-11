@@ -1,17 +1,19 @@
 import express from 'express';
 import router from './routes/salamander.routes'
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express();
 
 //middleware
 app.use(express.json());
 
-//route
+//routes
 app.use("/api", router);
+app.use('/videos', express.static(process.env.VIDEOS_DIR))
+app.use('/results', express.static(process.env.RESULTS_DIR))
 
-
-const PORT = 3000;
+const PORT = process.env.PORT
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 })
