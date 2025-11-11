@@ -7,6 +7,9 @@ const app = express();
 
 //middleware
 app.use(express.json());
+app.use('/videos', express.static(process.env.VIDEOS_DIR));
+app.use('/results', express.static(process.env.RESULTS_DIR));
+
 
 //routes
 app.use("/api", router);
