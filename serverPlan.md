@@ -1,5 +1,8 @@
 To run tests: mvn -f processor/pom.xml test
 
+to run video: java -jar processor/target/centroid-finder-1.0-SNAPSHOT-jar-with-dependencies.jar processor/sampleInput/ensantina.mp4 processor/sampleOutput/ensantina.csv 654321 100
+
+
 Notes:
 
 GET /api/videos
