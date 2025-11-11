@@ -1,13 +1,14 @@
 {
   "name": "centroid-finder",
   "version": "1.0.0",
+  "type": "module",
   "description": "Centroid-Finder for 334",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
 },
   "dependencies": {
@@ -20,7 +21,6 @@
   "keywords": [],
   "author": "Xalli Bell and Emily Menken",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/bellxalli/centroid-finder/issues"
   },

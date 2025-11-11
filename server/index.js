@@ -1,5 +1,5 @@
 import express from 'express';
-import router from './routes/salamander.routes'
+import router from './routes/salamander.routes.js'
 import dotenv from 'dotenv'
 dotenv.config()
 
