@@ -2,21 +2,20 @@ import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import dotenv from 'dotenv';
-import * as data from '../db/salamanderData.js'; // dynamic sampleInput paths
+import * as data from '../db/salamanderData.js';
 import ffmpeg from 'fluent-ffmpeg';
-import ffmpegPath from 'ffmpeg-static'; // precompiled ffmpeg binary for Node
+import ffmpegPath from 'ffmpeg-static';
+import { spawn } from 'child_process';
 
-// Load .env file for optional path overrides (VIDEOS_DIR, RESULTS_DIR, JAR_PATH)
+// Load .env file
 dotenv.config();
 
-// Set ffmpeg path for fluent-ffmpeg
+// Set ffmpeg path
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 // ---------------------------
 // In-memory job store
 // ---------------------------
-// Maps jobId -> { status, filename, result? }
-// NOTE: ephemeral storage — will reset if server restarts
 const jobs = new Map();
 
 // ---------------------------
@@ -48,7 +47,6 @@ export const requestSalamanderVideos = (req, res) => {
 // ---------------------------
 // GET /thumbnail/:filename
 // ---------------------------
-// Uses fluent-ffmpeg + ffmpeg-static to extract the first frame
 export const requestThumbnail = (req, res) => {
   const { filename } = req.params;
   const filePath = data.getVideoPath(filename);
@@ -57,10 +55,9 @@ export const requestThumbnail = (req, res) => {
 
   res.setHeader('Content-Type', 'image/jpeg');
 
-  // Extract single frame and pipe to response
   ffmpeg(filePath)
     .frames(1)
-    .format('mjpeg') // JPEG output
+    .format('mjpeg')
     .on('error', (err) => {
       console.error('ffmpeg error:', err);
       res.status(500).json({ error: 'Error generating thumbnail' });
@@ -74,34 +71,54 @@ export const requestThumbnail = (req, res) => {
 export const respondStartProcess = (req, res) => {
   try {
     const { filename } = req.params;
-    const { targetColor, threshold } = req.query;
+    let { targetColor, threshold } = req.query;
 
     if (!targetColor || !threshold)
       return res.status(400).json({ error: 'Missing targetColor or threshold query parameter.' });
 
-    const inputPath = data.getVideoPath(filename);
-    const outputCsv = path.join(RESULTS_DIR, `${filename}.csv`);
+    // Windows-safe paths
+    const inputPath = data.getVideoPath(filename).replace(/\\/g, '/');
+    const outputCsv = path.join(RESULTS_DIR, `${filename}.csv`).replace(/\\/g, '/');
 
     if (!fs.existsSync(inputPath)) return res.status(404).json({ error: 'Video file not found' });
 
+    // Convert #RRGGBB → 0xRRGGBB
+    if (targetColor.startsWith('#')) targetColor = '0x' + targetColor.slice(1);
+
     const jobId = uuidv4();
-    jobs.set(jobId, { status: 'processing', filename });
+    jobs.set(jobId, { status: 'processing', filename, progress: 0 });
 
-    // Spawn Java processor in detached mode
-    const javaProcess = require('child_process').spawn(
-      'java',
-      ['-jar', JAR_PATH, inputPath, outputCsv, targetColor, threshold],
-      { detached: true, stdio: 'ignore' }
-    );
-    javaProcess.unref();
+    console.log('Running Java command with:');
+    console.log('JAR:', JAR_PATH);
+    console.log('Input:', inputPath);
+    console.log('Output:', outputCsv);
+    console.log('TargetColor:', targetColor);
+    console.log('Threshold:', threshold);
 
-    // Poll for CSV file existence to mark job as done
-    const checkInterval = setInterval(() => {
-      if (fs.existsSync(outputCsv)) {
-        jobs.set(jobId, { status: 'done', result: `/results/${filename}.csv` });
-        clearInterval(checkInterval);
+    // Use shell: false to avoid Windows argument mangling
+    const javaProcess = spawn('java', ['-jar', JAR_PATH, inputPath, outputCsv, targetColor, threshold], {
+      shell: false
+    });
+
+    javaProcess.stdout.on('data', (data) => {
+      const text = data.toString();
+      console.log(`[Java stdout] ${text}`);
+      const match = text.match(/Progress:\s*(\d+)%/);
+      if (match) jobs.get(jobId).progress = parseInt(match[1], 10);
+    });
+
+    javaProcess.stderr.on('data', (data) => {
+      console.error(`[Java stderr] ${data.toString()}`);
+    });
+
+    javaProcess.on('exit', (code) => {
+      console.log(`Java process exited with code ${code}`);
+      if (code === 0 && fs.existsSync(outputCsv)) {
+        jobs.set(jobId, { status: 'done', filename, result: `/results/${filename}.csv` });
+      } else {
+        jobs.set(jobId, { status: 'error', filename });
       }
-    }, 2000);
+    });
 
     res.status(202).json({ jobId });
   } catch (err) {
