@@ -1,26 +1,24 @@
 {
+  "dependencies": {
+    "express": "^5.1.0"
+  },
   "name": "centroid-finder",
   "version": "1.0.0",
-  "description": "Centroid-Finder for 334",
+  "description": "centroid finder",
   "main": "index.js",
   "directories": {
     "lib": "lib"
   },
+  "devDependencies": {},
   "scripts": {
-    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-},
-  "dependencies": {
-    "express": "^5.1.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bellxalli/centroid-finder.git"
   },
-  "keywords": [],
   "author": "Xalli Bell and Emily Menken",
   "license": "ISC",
-  "type": "commonjs",
   "bugs": {
     "url": "https://github.com/bellxalli/centroid-finder/issues"
   },
