@@ -10,7 +10,6 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Path to processor/sampleInput folder
-// This is where you will put your videos for processing
 const videosDir = path.join(__dirname, '..', '..', 'processor', 'sampleInput');
 
 /**
@@ -19,11 +18,16 @@ const videosDir = path.join(__dirname, '..', '..', 'processor', 'sampleInput');
  */
 export const getVideos = () => {
   try {
+    if (!fs.existsSync(videosDir)) {
+      console.error(`Sample input folder not found: ${videosDir}`);
+      return [];
+    }
+
     const files = fs.readdirSync(videosDir);
     return files.filter(file => /\.(mp4)$/i.test(file));
   } catch (err) {
     console.error("Error reading sampleInput directory:", err);
-    return []; // Return empty array if folder is missing or unreadable
+    return []; // Return empty array if folder is unreadable
   }
 };
 
