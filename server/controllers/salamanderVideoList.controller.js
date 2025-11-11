@@ -7,7 +7,7 @@ import { getThumbNail } from "../repos/salamander.repo";
 import { getVideoJobStatus } from "../repos/salamander.repo";
 import { postVideoProcess } from "../repos/salamander.repo";
 
-const __filename = fielURLToPath(import.meta.url);
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const jobs = new Map(); //store here for now
 
@@ -29,14 +29,24 @@ export const requestSalamanderVideos = (req, res) =>
 
 export const requestThumbnail = (req, res) => 
 {
-    const {fielname} = req.params;
+    const {filename} = req.params;
     const filePath = path.join(__dirname, '..', 'videos', filename);
     fs.access(filePath, fs.constants.F_OK, (err) => {
         if(err)
         {
             return res.status(500).json({error: 'Error generating thumbnail'});
         }
-        res.status(200).json({message: `Thumbnail for ${filename} would go here`});
+        try 
+        {
+            // placeholder, replace with real thumbnail generation later
+            const placeholder = fs.readFileSync(path.join(__dirname, 'placeholder.jpg'));
+            res.setHeader('Content-Type', 'image/jpeg');
+            res.status(200).send(placeholder);
+        } 
+        catch (error) {
+            console.error("Thumbnail generation error:", error);
+            res.status(500).json({ error: "Error generating thumbnail" });
+        }
     }); //update later with no placeholders
 }
 
@@ -67,26 +77,32 @@ export const respondStartProcess = (req, res) =>
 
         res.status(202).json({jobId}); // good
     }
-    catch(err)
+    catch(error)
     {
         console.error("Error in respondStartProcess:", error);
-
         // internal server error
         res.status(500).json({
-            error: "Internal server error. Please try again later."
+            error: "Error starting job"
         });
     }
 }
 
 export const requestJobStatus = (req, res) => 
 {
-    const {jobId} = req.params;
-    const job = jobs.get(jobId);
-
-    if(!job)
+    try 
     {
-        return res.status(404).json({error: 'Job ID not found'});
-    }
+        const { jobId } = req.params;
+        const job = jobs.get(jobId);
 
-    res.status(200).json(job);
+        if (!job) {
+            return res.status(404).json({ error: "Job ID not found" });
+        }
+
+        res.status(200).json(job);
+    } 
+    catch (err) 
+    {
+        console.error("Error fetching job status:", err);
+        res.status(500).json({ error: "Error fetching job status" });
+    }
 }
