@@ -1,9 +1,21 @@
 import express from 'express';
 import router from './routes/salamander.routes.js'
 import dotenv from 'dotenv'
+
+import cors from 'cors';
+
 dotenv.config()
 
 const app = express();
+
+app.use(
+  cors({
+    origin: 'http://localhost:4000', //frontend URL
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
+  })
+);
+
 
 //middleware
 app.use(express.json());

@@ -14,6 +14,7 @@ RUN apk add --no-cache openjdk21 ffmpeg bash
 # Copy package.json / package-lock.json and install Node.js dependencies
 COPY package*.json ./
 RUN npm install --production
+RUN npm install cors --production  # <--- ensure cors is installed
 
 # ---------- Copy application code ----------
 # Copy all remaining project files into the container
