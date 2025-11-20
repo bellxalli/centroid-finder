@@ -4,7 +4,7 @@ Refactoring & Code Organization
     Organize files and folders for clarity (e.g., separate API, static, and utility code).
 
 Testing
-    Add integration tests for API endpoints and processor interactions.
+    ***Add integration tests for API endpoints and processor interactions.
     Test error cases and edge conditions (invalid input, missing files, etc.).
 
 Error Handling
