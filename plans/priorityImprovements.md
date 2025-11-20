@@ -5,7 +5,7 @@ Refactoring & Code Organization
 
 Testing
     Add integration tests for API endpoints and processor interactions.
-    Test error cases and edge conditions (invalid input, missing files, etc.).
+    ***Test error cases and edge conditions (invalid input, missing files, etc.).
 
 Error Handling
     Validate all inputs and outputs (both server and Java processor).
