@@ -4,8 +4,6 @@ package io.github.bellxalli.centroidFinder;
 import java.awt.image.BufferedImage;
 
 
-
-
 /**
  * An implementation of the ImageBinarizer interface that uses xor distance
  * to determine whether each pixel should be black or white in the binary image.
@@ -59,7 +57,7 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         {
             for(int x = 0; x < width; x++)
             {
-                //getRGB(x,y) return AARRGGBB so shift left two spaces (use & not <<>>)
+                //getRGB(x,y) return AARRGGBB 
                 int rgb = image.getRGB(x, y) & 0x00FFFFFF;
 
                 //use distance method 
@@ -89,8 +87,8 @@ public class DistanceImageBinarizer implements ImageBinarizer {
      */
     @Override
     public BufferedImage toBufferedImage(int[][] image) {
-        int height = image.length; //height = y = y?
-        int width = image[0].length; //width = xumn = x?
+        int height = image.length; //height = y = y
+        int width = image[0].length; //width = xumn = x
 
         BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 

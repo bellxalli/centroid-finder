@@ -3,8 +3,6 @@ package io.github.bellxalli.centroidFinder;
 import java.io.File;
 
 public class ValidateFileInput {
-
-
     public File fileValidate(File input)
     {
         //ensure input file exists

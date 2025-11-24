@@ -5,9 +5,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
-
 public class DfsBinaryGroupFinder implements BinaryGroupFinder {
    /**
     * Finds connected pixel groups of 1s in an integer array representing a binary image.
@@ -71,20 +68,18 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                 // if value is not 1 or 0 its invalid
                 if (value != 0 && value != 1){
 
-                throw new IllegalArgumentException("Invalid value: " + value + "!");
+                    throw new IllegalArgumentException("Invalid value: " + value + "!");
 
-            }//end if
-         }//end forInner
+                }//end if
+            }//end forInner
         }//end forOutter
 
 
         int[][] directions = {
-
             {-1,0}, // up
             {1,0}, // down
             {0,-1}, // left
             {0,1} // right
-
         };
 
 
@@ -101,10 +96,8 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
                     int sumOfY = 0;
 
                     for (int[] pix : pixels) {
-
                         sumOfY += pix[0];
                         sumOfX += pix[1];
-
                     }//end forInner
 
                     int centroidX = sumOfX / size;
@@ -148,5 +141,4 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
             }//end for
         }//end while
     }//end helper
-
 }

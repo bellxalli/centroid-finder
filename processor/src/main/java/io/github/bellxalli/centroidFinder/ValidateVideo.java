@@ -1,7 +1,6 @@
 package io.github.bellxalli.centroidFinder;
 
 public class ValidateVideo {
-    
     public int[] validateColorAndThreshold(String colorArg, String thresholdArg){
 
         //getting targetColor from agrs and converting it into int from various formats
@@ -18,13 +17,11 @@ public class ValidateVideo {
             {
                 targetColor = Integer.decode(colorArg);
                 validColors[0] = targetColor;
-
             }
             else
             {
                 targetColor = Integer.parseInt(colorArg, 16);
                 validColors[0] = targetColor;
-
             }
         }
         catch (NumberFormatException e)

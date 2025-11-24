@@ -3,9 +3,6 @@ package io.github.bellxalli.centroidFinder;
 import java.awt.image.BufferedImage;
 import java.util.List;
 
-
-
-
 public interface ImageGroupFinder {
     /**
      * Finds connected groups in an image.
