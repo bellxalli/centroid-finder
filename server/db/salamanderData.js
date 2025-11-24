@@ -1,3 +1,15 @@
+/* 
+ * This is the salamanderData.js file.
+ * This file acts as the data access layer for the video files. It abstracts the 
+ * filesystem structure through the following two functions: 
+ *  getVideos() -gets all video filenames in directory
+ *  getVideoPath() -getsabsolute path for a specific video
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025 
+*/
+
+
 // server/db/salamanderData.js
 // Dynamic "database" that lists videos in processor/sampleInput
 
