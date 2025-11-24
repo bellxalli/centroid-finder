@@ -122,7 +122,7 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
 
     }//end findConnectedGroups
 
-    /*
+    /**
     * Preforms a BFS from a starting pixel to find all connected pixels with value
     * 1 in a binary image. This method uses an explicit queue to prevent a stack 
     * overflow. 
