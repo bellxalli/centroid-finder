@@ -14,6 +14,22 @@ import org.jcodec.common.io.SeekableByteChannel;
 import org.jcodec.common.model.Picture;
 import org.jcodec.scale.AWTUtil;
 
+/**
+ * Processes a video by extracting frames, converting them to binary images,
+ * detecting connected groups, and writing centroid information to a CSV file.
+ * This class coordinates the workflow between a DistanceImageBinarizer and a 
+ * DfsBinaryGroupFinder.
+ * For each decoded video frame, the procesor does the following:
+ *  Converts the fram to a BufferedImage
+ *  Generates a binary representation of the frame
+ *  Finds connected groups and their centroids
+ *  Writes centroid coordinates and timestamps to a CSV output file
+ * If no connected group is found for a frame, the CSV will record (-1,-1) for 
+ * the centroid coordinates
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025
+ */
 public class VideoProcessor {
 
     protected DistanceImageBinarizer binarizer;
@@ -24,6 +40,27 @@ public class VideoProcessor {
         this.groupFinder = groupFinder;
     }
 
+    /**
+     * Processes the input video and writes frame-by-frame centroid data to a CSV file.
+     * The method performs the following steps:
+     *  Opens the input video using JCodec
+     *  Reads each frame sequentially
+     *  Converts the frame into a BufferedImage
+     *  Binarizes it using the configured DistamceImageBinarizer
+     *  Detects connected pixel groups using the DfsBinaryGroupFinder
+     *  Computes the timestamp based on frame index and FPS
+     *  Writes the timestamp and centroid coordinates to the CSV output file
+     * 
+     * Fallback FPS of 30.0 is used if metadate is missing or unreadable.
+     * If no group is detected in a frame, the method writes: time, -1, -1
+     * 
+     * Both the input video file and output CSV file must be non-null.
+     * If either is null, the method exits without processing.  
+     *    
+     * @param input the video file to process.
+     * @param csvOutput the destination CSV file where frame data will be written.
+     * @throws RuntimeException if an I/O or JCodec error occurs during processing.
+     */
     public void processVideo(File input, File csvOutput) {
         // initializing to null for later use
         SeekableByteChannel channel = null;
