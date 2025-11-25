@@ -1,7 +1,31 @@
 package io.github.bellxalli.centroidFinder;
 
+/**
+ * Utility class for validating and parsing color and threshold input values.
+ * 
+ * This class supports interpreting colors provided as strings in multiple
+ * hexadecimal formats and converting them to integer representations. It 
+ * also validates that a threshold argument is a valid integer.
+ */
 public class ValidateVideo {
-    
+
+    /**
+     * Validates and parses a color and threshold value from string inputs.
+     * 
+     * The color argument may be provided in any of the following formats:
+     *  #RRGGBB
+     *  0xRRGGBB or 0XRRGGBB
+     * RRGGBB
+     * 
+     * The method attempts to convert the color to an integer and the threshold
+     * to a decimal integer. If either value is invalid, an error message is printed
+     * and the method returns null.
+     * 
+     * @param colorArg a string representing a hex color in one of the supported formats.
+     * @param thresholdArg a string representing an integer threshold.
+     * @return an int[] of length 2 where index 0 = parsed color value and index 1 = parsed threshold 
+     *         returns null if either argument is invalid 
+     */
     public int[] validateColorAndThreshold(String colorArg, String thresholdArg){
 
         //getting targetColor from agrs and converting it into int from various formats
@@ -18,13 +42,11 @@ public class ValidateVideo {
             {
                 targetColor = Integer.decode(colorArg);
                 validColors[0] = targetColor;
-
             }
             else
             {
                 targetColor = Integer.parseInt(colorArg, 16);
                 validColors[0] = targetColor;
-
             }
         }
         catch (NumberFormatException e)

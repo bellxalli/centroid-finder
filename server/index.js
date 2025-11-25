@@ -1,3 +1,14 @@
+/*
+ * This is the index.js file. 
+ * This file initializes and configures aen Express.js server for the Centroid Finder logic. 
+ * It loads enviroment variables, applies CORS, sets up middleware,
+ * mounts API routes, and configures static file hosting. 
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025
+*/
+
+
 import express from 'express';
 import router from './routes/salamander.routes.js'
 import dotenv from 'dotenv'
@@ -16,17 +27,13 @@ app.use(
   })
 );
 
-
 //middleware
 app.use(express.json());
 app.use('/videos', express.static(process.env.VIDEOS_DIR));
 app.use('/results', express.static(process.env.RESULTS_DIR));
 
-
 //routes
 app.use("/api", router);
-app.use('/videos', express.static(process.env.VIDEOS_DIR))
-app.use('/results', express.static(process.env.RESULTS_DIR))
 
 const PORT = process.env.PORT || 3000;
 

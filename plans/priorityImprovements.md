@@ -13,23 +13,4 @@ Error Handling
 
 Documentation
     Document all functions and classes (Java and JS).
-    Add usage instructions for running locally and in Docker.
-
-***Optional***
-Security
-    Optimize Docker image size (multi-stage builds, only production dependencies).
-    Restrict CORS origins to only trusted domains.
-
-Performance
-    Profile video processing for bottlenecks; consider more efficient libraries if needed.
-    Optimize Docker image size (multi-stage builds, only production dependencies).
-
-Bug Fixes
-    Check for redundant middleware and route registrations (e.g., repeated express.static calls).
-    Fix status display and error handling for processor calls in the server.
-
-Other
-    Review and update dependencies for security and compatibility.
-    Automate linting and formatting for both Java and JS.
-
-
+****    Add usage instructions for running locally and in Docker.
