@@ -1,12 +1,15 @@
+io\github\bellxalli\centroidFinder\integration\IntegrationTests$TestColorDistanceFinder.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$4.class
 io\github\bellxalli\centroidFinder\ServerTests.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$6.class
+io\github\bellxalli\centroidFinder\integration\IntegrationTests.class
 io\github\bellxalli\centroidFinder\VideoProcessorTests$1FakeFinder.class
 io\github\bellxalli\centroidFinder\VideoProcessorTests$2.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$5.class
 io\github\bellxalli\centroidFinder\ErrorAndEdgecaseTests.class
 io\github\bellxalli\centroidFinder\DistanceImageBinarizerTest.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$1.class
+io\github\bellxalli\centroidFinder\integration\IntegrationTests$TestGroupFinder.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$7.class
 io\github\bellxalli\centroidFinder\DfsBinaryGroupFinderTests.class
 io\github\bellxalli\centroidFinder\BinarizingImageGroupFinderTests$8.class
