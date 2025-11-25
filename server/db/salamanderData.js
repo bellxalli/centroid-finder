@@ -35,7 +35,21 @@ export const getVideos = () => {
       return [];
     }
 
+    // Ensure directory is accessible
+    try {
+      fs.accessSync(videosDir, fs.constants.R_OK);
+    } catch (accessErr) {
+      console.error(`Cannot read sampleInput folder: ${videosDir}`, accessErr);
+      return [];
+    }
+
     const files = fs.readdirSync(videosDir);
+
+    if (!Array.isArray(files)) {
+      console.error("Unexpected directory read result:", files);
+      return [];
+    }
+
     return files.filter(file => /\.(mp4)$/i.test(file));
   } catch (err) {
     console.error("Error reading sampleInput directory:", err);
@@ -48,5 +62,23 @@ export const getVideos = () => {
  * Useful for passing to your Java processor.
  */
 export const getVideoPath = (filename) => {
-  return path.join(videosDir, filename);
+  // Prevent directory traversal attacks
+  if (
+    typeof filename !== "string" ||
+    filename.includes('..') ||
+    filename.includes('/') ||
+    filename.includes('\\')
+  ) {
+    throw new Error("Invalid filename");
+  }
+
+  const filePath = path.join(videosDir, filename);
+
+  // Extra safety — ensure the path is inside videosDir
+  const resolved = path.resolve(filePath);
+  if (!resolved.startsWith(path.resolve(videosDir))) {
+    throw new Error("Invalid filename path");
+  }
+
+  return resolved;
 };
