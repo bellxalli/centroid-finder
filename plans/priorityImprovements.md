@@ -1,6 +1,6 @@
 ***Required***
 Refactoring & Code Organization
-    Remove duplicate or unused code (e.g., duplicate static middleware in index.js).
+    ***Remove duplicate or unused code (e.g., duplicate static middleware in index.js).
     Organize files and folders for clarity (e.g., separate API, static, and utility code).
 
 Testing

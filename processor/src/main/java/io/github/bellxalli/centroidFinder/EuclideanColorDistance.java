@@ -50,7 +50,6 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         return euclideanResult;
     }
 
-
     //helper convert 0xRRGGBB
     private int[] hexToRGB(int color)
     {
@@ -65,5 +64,4 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
         return rgb;
     }
-
 }
