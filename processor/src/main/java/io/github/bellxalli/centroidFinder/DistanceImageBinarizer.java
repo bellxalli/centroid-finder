@@ -51,9 +51,11 @@ public class DistanceImageBinarizer implements ImageBinarizer {
         int height = image.getHeight();
         int [][] binaryArray = new int[height][width];
 
-        for(int y = 0; y < height; y++) {
-            for(int x = 0; x < width; x++) {
-                // getRGB(x,y) returns AARRGGBB, mask alpha channel
+        for(int y = 0; y < height; y++)
+        {
+            for(int x = 0; x < width; x++)
+            {
+                //getRGB(x,y) return AARRGGBB 
                 int rgb = image.getRGB(x, y) & 0x00FFFFFF;
 
                 // compute distance using the distanceFinder
