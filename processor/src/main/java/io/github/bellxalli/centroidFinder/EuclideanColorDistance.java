@@ -22,18 +22,7 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
      */
     @Override
     public double distance(int colorA, int colorB) {
-    // make thorough unit tests!
-    // convert hex to rgb (use helper)
-    // return euclidean color distance between 2 hex rgb colors
-    //     color represented as 0x RR GG BB
-    //     each component ranges 0 - 255
-    // each color r, g, b is in 3D space 
-    // Euclidean Distance formula:
-    //     sqrt((r1 - r2)^2 + (g1 - g2)^2 + (b1 - b2)^2)
-    // meaures how visually different two colors are
-
-
-    //get rgb values
+        //get rgb values
         int[] rgb1 = hexToRGB(colorA);
         int[] rgb2 = hexToRGB(colorB);
 
@@ -50,7 +39,16 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
         return euclideanResult;
     }
 
-    //helper convert 0xRRGGBB
+
+    /**
+    * Converts a 25-bit integer color value in 0xRRGGBB format to its individual
+    * red, green, and blue components.
+    * The method extracts each color channel using bitwise operations, returns them 
+    * as an array of three integers in RGB order.
+    * 
+    * @param color a 24-bit integer representing a color in the form 0xRRGGBB
+    * @return An int array of length 3 containing the RGB components ([red,green,blue])
+    */
     private int[] hexToRGB(int color)
     {
         int[] rgb = new int[3];

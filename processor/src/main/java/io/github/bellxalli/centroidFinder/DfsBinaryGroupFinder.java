@@ -114,8 +114,26 @@ public class DfsBinaryGroupFinder implements BinaryGroupFinder {
         return groups;
 
     }//end findConnectedGroups
-    
 
+    /**
+    * Preforms a BFS from a starting pixel to find all connected pixels with value
+    * 1 in a binary image. This method uses an explicit queue to prevent a stack 
+    * overflow. 
+    * 
+    * The method checks bounds, visited-state, and pixel value before processing each 
+    * location. Valid pixels are marked as visited, added to the results list, and 
+    * their neighbors are enqueued to repeat the process.
+    * 
+    * @param image a 2D integer array representing the binary image.
+    * @param visited a 2D boolean array tracking which pixels have already been processed 
+    *                to prevent re-visiting.
+    * @param y the starting row index for the BFS traversal.
+    * @param x the starting column index for the BFS traversal.
+    * @param pixels a list that will be populated with each pixel
+    * @param directions an array of relative movement offset used to explore adjacent pixels.
+    * @param height the total number of rows in the image.
+    * @param width the total number of columns in the image.
+    */
     public void helper(int[][] image, boolean[][] visited, int y, int x, List<int[]> pixels, int[][] directions, int height, int width) {
         // BFS queue to avoid stack overflow
         LinkedList<int[]> queue = new LinkedList<>();
