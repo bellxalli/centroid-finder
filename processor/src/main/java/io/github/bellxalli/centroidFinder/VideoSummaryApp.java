@@ -1,9 +1,44 @@
 package io.github.bellxalli.centroidFinder;
 
-//imports
 import java.io.File;
 
+/**
+ * Command-line application for processing a video and generating a CSV summary
+ * containing centroid positions of detected color-based groups in each frame.
+ *
+ * The program expects four command-line arguments:
+ *  InputPath  – path to the input video file
+ *  OutputCsv  – destination CSV file
+ *  TargetColor – color to track (formats: #RRGGBB, 0xRRGGBB, or RRGGBB)
+ *  Threshold   – integer distance threshold used during binarization
+ *
+ * The application validates input values, initializes the processing components,
+ * and uses VideoProcessor to analyze the video and generate the CSV output.
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025
+ */
 public class VideoSummaryApp {
+    /**
+     * Entry point for the video summary application.
+     *
+     * Steps performed by this method:
+     *   1. Validates that four command-line arguments were provided.
+     *   2. Validates and parses the target color and threshold values.
+     *   3. Validates that the input video file exists.
+     *   4. Initializes the color distance finder, binarizer, and group finder.
+     *   5. Processes the video using VideoProcessor.
+     *   6. Prints a summary of the completed operation.
+     *
+     * If invalid arguments are supplied, usage instructions are printed and
+     * the program exits without further processing.
+     *
+     * Command-line arguments:
+     *   args[0] – input video file path
+     *   args[1] – output CSV file path
+     *   args[2] – target color string
+     *   args[3] – threshold value
+     */
     public static void main(String[] args)
     {
         //checking number of arguments

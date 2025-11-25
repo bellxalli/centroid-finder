@@ -1,5 +1,15 @@
-// salamander.repo.js — Repository layer for managing salamander video data.
-// This handles the data logic, separate from controllers and routes.
+/*
+ * This file is the salamander.repo.js.
+ * This file implements the repository layer of the Centroid Finder application. 
+ * The file does data operations that manage the video files and tracking 
+ * video-processing jobs. The reposity abstracts data acess from the controller 
+ * and routing layers allowing for the application to work with a clean API that is 
+ * independent of the filesystem or database.
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025
+*/
+
 
 import fs from "fs";
 import path from "path";

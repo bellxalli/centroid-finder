@@ -1,9 +1,6 @@
 package io.github.bellxalli.centroidFinder;
 
-
 import java.awt.image.BufferedImage;
-
-
 
 /**
  * An interface for converting between RGB images and binary (black-and-white) images.

@@ -1,3 +1,18 @@
+/* 
+ * This is the salamanderVideoList.controller.js.
+ * This file implements the controller layer of the Centroid Finder application. 
+ * This handels incoming HTTP requests, coordinate with the data layer, run video-
+ * processing, and send responses back to client. 
+ * The functions in this file include:
+ *  Get list of available videos
+ *  Get video thumbnail
+ *  Run java based video processing pipeline
+ *  Get job status 
+ * 
+ * Authors: Xalli Bell and Emily Menken
+ * 2025
+*/
+
 import fs from 'fs';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
