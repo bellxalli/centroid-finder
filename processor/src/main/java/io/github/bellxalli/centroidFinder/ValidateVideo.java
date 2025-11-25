@@ -42,13 +42,11 @@ public class ValidateVideo {
             {
                 targetColor = Integer.decode(colorArg);
                 validColors[0] = targetColor;
-
             }
             else
             {
                 targetColor = Integer.parseInt(colorArg, 16);
                 validColors[0] = targetColor;
-
             }
         }
         catch (NumberFormatException e)

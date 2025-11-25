@@ -62,5 +62,4 @@ public class EuclideanColorDistance implements ColorDistanceFinder {
 
         return rgb;
     }
-
 }

@@ -70,10 +70,8 @@ public class VideoProcessor {
         {
             // handle null safely for test case
             if (input == null || csvOutput == null) 
-            {
                 return;
-            }
-
+            
             // open the video file for reading
             channel = NIOUtils.readableChannel(input);
             FrameGrab grab = FrameGrab.createFrameGrab(channel);
@@ -89,9 +87,8 @@ public class VideoProcessor {
             {
                 var meta = grab.getVideoTrack().getMeta();
                 if (meta.getTotalDuration() > 0 && meta.getTotalFrames() > 0) 
-                {
                     fps = meta.getTotalFrames() / meta.getTotalDuration(); // get timestamp for frames
-                }
+    
             } 
             catch (Exception e) 
             {
