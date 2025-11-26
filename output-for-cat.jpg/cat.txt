@@ -1,6 +1,0 @@
-Used command
-
-java -cp src ImageSummaryApp sampleInput/cat.jpg 000000 164 
-                                            (hex number for black)
-
-to search for black in the img cat.jpg, resulting in catBinarized.jpg and catGroups.csv
