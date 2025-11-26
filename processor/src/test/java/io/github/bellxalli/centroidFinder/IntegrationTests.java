@@ -1,4 +1,4 @@
-package io.github.bellxalli.centroidFinder.integration;
+package io.github.bellxalli.centroidFinder;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,13 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
-
-import io.github.bellxalli.centroidFinder.ColorDistanceFinder;
-import io.github.bellxalli.centroidFinder.Coordinate;
-import io.github.bellxalli.centroidFinder.DfsBinaryGroupFinder;
-import io.github.bellxalli.centroidFinder.DistanceImageBinarizer;
-import io.github.bellxalli.centroidFinder.Group;
-import io.github.bellxalli.centroidFinder.VideoProcessor;
 
 public class IntegrationTests {
 
