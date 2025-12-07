@@ -17,6 +17,8 @@ import cors from 'cors';
 
 dotenv.config()
 
+console.log("RESULTS_DIR:", process.env.RESULTS_DIR);  // ← ADD THIS HERE
+
 const app = express();
 
 app.use(

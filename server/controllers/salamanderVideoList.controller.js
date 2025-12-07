@@ -201,3 +201,33 @@ export const requestJobStatus = (req, res) => {
 
   res.status(200).json(job);
 };
+
+// Serve CSV file result (jobId-based)
+export const getCsvResult = (req, res) => {
+  const { jobId } = req.params;
+  const job = jobs.get(jobId);
+
+  if (!job) return res.status(404).json({ error: "Job ID not found" });
+
+  const csvName = `${job.filename}.csv`;
+  const filePath = path.join(RESULTS_DIR, csvName);
+
+  if (!fs.existsSync(filePath)) return res.status(404).send("CSV not found");
+
+  res.download(filePath);
+};
+
+// -----------------------------------------------------
+// NEW: Serve CSV BY FILENAME (this is the one you need)
+// -----------------------------------------------------
+export const getCsvByFilename = (req, res) => {
+  const { filename } = req.params;
+
+  const filePath = path.join(RESULTS_DIR, filename);
+
+  if (!fs.existsSync(filePath)) {
+    return res.status(404).send("CSV not found");
+  }
+
+  res.download(filePath);
+};
